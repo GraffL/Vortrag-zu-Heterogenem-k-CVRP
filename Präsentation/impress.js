@@ -1,4 +1,19 @@
 /**
+Additional Code:
+*/
+
+function JSTestfunction () {
+	if(document.getElementsByTagName("body")[0].classList[2] == "impress-on-Algorithm-Overview") {
+		document.getElementById("sidebar").classList.add("sidebar-visible");
+	}
+	//document.getElementById("JS-Test").innerHTML = document.getElementsByTagName("body")[0].className;
+}
+
+function scaleSidebar(windowScale) {
+	document.getElementById("sidebar-content").style.transform = "scale("+windowScale+")";
+}
+
+/**
  * impress.js
  *
  * impress.js is a presentation tool based on the power of CSS3 transforms and transitions
@@ -280,8 +295,8 @@
 
     // Some default config values.
     var defaults = {
-        width: 1024,
-        height: 768,
+        width: 1280,
+        height: 720,
         maxScale: 1,
         minScale: 0,
 
@@ -475,6 +490,11 @@
                 transform: perspective( config.perspective / windowScale ) + scale( windowScale )
             } );
             css( canvas, rootStyles );
+			
+			// ####################################################################
+			// Scale Sidebar
+			scaleSidebar(windowScale);
+						
 
             body.classList.remove( "impress-disabled" );
             body.classList.add( "impress-enabled" );
@@ -941,11 +961,3 @@
 //
 // I've learnt a lot when building impress.js and I hope this code and comments
 // will help somebody learn at least some part of it.
-
-
-function JSTestfunction () {
-	if(document.getElementsByTagName("body")[0].classList[2] == "impress-on-step-2") {
-		document.getElementById("ueberblick").classList.add("ueberblick-sichtbar");
-	}
-	//document.getElementById("JS-Test").innerHTML = document.getElementsByTagName("body")[0].className;
-}
