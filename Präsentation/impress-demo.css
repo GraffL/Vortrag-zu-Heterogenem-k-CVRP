@@ -72,7 +72,7 @@ table {
     want to leave anybody behind.
 */
 body {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Calibri (Textkörper)', sans-serif;
     min-height: 740px;
 
 	background:#000000;
@@ -145,7 +145,7 @@ a:focus {
 */
 
 .step {
-	/*border: 1px #000000 solid;*/
+	
     position: relative;
     width: 900px;
 	height: 700px;
@@ -158,8 +158,8 @@ a:focus {
     -o-box-sizing:      border-box;
     box-sizing:         border-box;
 
-    font-family: 'PT Serif', georgia, serif;
-    font-size: 32px;
+    font-family: 'Calibri (Textkörper)', sans-serif;
+    font-size: 28px;
     line-height: 1.5;
 }
 
@@ -208,11 +208,13 @@ a:focus {
 
 
 /* Custom CSS: */
-h1 {text-align:center; font-size:200%;}
+h1 {text-align:center; font-size:150%;}
 h2 {text-align:center; font-size:150%;}
 h3 {text-align:center; font-size:125%;}
 
 
+.TeXFake {transition: opacity .5s;}
+.past .TeXFake { opacity: 0;}
 
 
 /*
@@ -267,11 +269,15 @@ h3 {text-align:center; font-size:125%;}
 */
 
 
+/*Custom CSS*/
+.problem {border-radius: 25px; background:#3333B2; color:#FFFFFF; box-shadow: 10px 10px 8px #868686; padding:20px;}
+
+
 
 #sidebar {display:none;}
 .sidebar-visible {display:block !important; width:100%; height:100%; background-color:#FFFFFF;}
 
-.impress-bereich {background:#FFFFFF;
+.impress-container {background:#FFFFFF;
 	/*background: rgb(215, 215, 215);
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
     background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
@@ -279,3 +285,11 @@ h3 {text-align:center; font-size:125%;}
     background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));*/}
+	
+	
+.impress-on-overview .impress-container {width:100% !important;}
+.impress-on-overview .impress-container {transition: width 2s;}
+.impress-on-overview .sidebar-container {width:0% !important;}
+.impress-on-overview .sidebar-container .sidebar-visible {opacity:0;}
+.impress-on-overview .sidebar-container .sidebar-visible {transition: opacity .5s;}
+.impress-on-overview .sidebar-container {transition: width 2s;}
