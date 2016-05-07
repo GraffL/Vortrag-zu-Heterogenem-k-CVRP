@@ -88,8 +88,11 @@
 \newcommand{\OPT}{\mathrm{OPT}}
 \newcommand{\MST}{\mathrm{MST}}
 
-\newcommand{\HetTSP}{\textsc{HetTSP}}
-\newcommand{\HetCVRP}{\textsc{HetCVRP}}
+\newcommand{\TSP}{\textbf{TSP}}
+\newcommand{\HomTSP}{\textbf{HomTSP}}
+\newcommand{\HetTSP}{\textbf{HetTSP}}
+\newcommand{\CVRP}{\textbf{CVRP}}
+\newcommand{\HetCVRP}{\textbf{HetCVRP}}
 
 
 \renewcommand*\theenumi{\alph{enumi}}
@@ -148,6 +151,90 @@
 		\includegraphics[width=1\textwidth]{Problemdefinitionen.pdf}
 	
 	\newpage
+	\section{Algorithmen für \HomTSP und \CVRP}
+	
+	\subsection{Algorithmus für \HomTSP}
+
+	\begin{algorithm}[H]
+		\caption{HomTSP-Approx}\label{AlgHomTSP}
+		\begin{algorithmic}[1]
+			\Procedure{HomTSP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}, k$}
+			\State $\tau \gets$ \textsc{TSP-Approx} $\left(G, d\right)$
+			\State $\left(\pi_i\right)_{i=1}^k \gets$ Teile $\tau$ durch Entfernen von Kanten in $k$ Teilstrecken mit Länge $\leq \frac{d(\tau)}{k}$
+			\State $\left(\tau_i\right)_{i=1}^k \gets$ Verbinde die zwei Endpunkte von $\pi_i$ mit $s$.
+			\State \Return $\left(\tau_i\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}	
+	
+	\begin{lemma}[Theorem 8 in \cite{TourSpliting}\footnote{Tatsächlich wird in \cite{TourSpliting} mit einem etwas komplexeren Algorithmus sogar eine Approximationsgüte von $\rho + 1 - \frac{1}{k}$ erreicht.}]
+		Unter Verwendung eines $\rho$-approximativen Algorithmus (z.B. $\rho=\frac{3}{2}$ durch Christofides) für \TSP{} ist \textsc{HomTSP} $(\rho+1)$-approximativ.
+	\end{lemma}
+	
+	\begin{proof}
+		Schritt 3 ist möglich, denn jeder Pfad~$\pi_i$ entspricht Kanten der Gesamtlänge~${>\frac{d(\tau)}{k}}$ in $\tau$: Zunächst die (möglicherweise 0 vielen) Kanten in $pi_i$ der Gesamtlänge~$\leq \frac{d(\tau)}{k}$ und dann der entfernten nächsten Kante, die die Gesamtlänge über diese Schwelle gebracht hätte. Nach dem Erstellen der ersten $(k-1)$ Pfade sind daher höchstens noch Kanten der Länge 
+			\[d(\tau) - \sum_{i=1}^{k-1}d(\pi_i) < d(\tau) - (k-1)\cdot \frac{d(\tau)}{k} = \frac{d(\tau)}{k}\]
+		übrig, die daher von $\pi_k$ abgedeckt werden können.
+		
+		Da jeder der Endpunkte $u$ und $v$ von $\pi_i$ auch in einer optimalen Lösung besucht werden muss, gilt sicher $d(s,u), d(s,v) \leq \frac{1}{2}\OPT_\HomTSP$. Außerdem ist die Vereinigung aller Touren $\tau_i^\ast$ einer optimalen Lösung von \HomTSP{} eine zulässige Lösung von $\TSP$ und damit $\OPT_\TSP \leq \sum_{i=1}^{k}d(\tau_i^\ast) \leq k\cdot \max_{i=1}^{k}d(\tau_i^\ast) = k\cdot \OPT_\HomTSP$.
+		
+		Zusammen ergibt dies für jede der Touren $\tau_i$ (und damit insbesondere für die längste):
+		\begin{align*}
+			d(t_i) &\leq \frac{d(\tau)}{k} + 1\cdot \OPT_\HomTSP \leq \frac{\rho\cdot \OPT_\TSP}{k} + \OPT_\HomTSP \\
+			       &\leq \frac{\rho\cdot k\cdot \OPT_\HomTSP}{k} + \OPT_\HomTSP = (\rho+1) \OPT_\HomTSP)
+		\end{align*}
+	\end{proof}
+	
+	\subsection{Algorithmus für \CVRP}
+	
+	\begin{algorithm}[H]
+		\caption{CVRP-Approx}\label{AlgCVRP}
+		\begin{algorithmic}[1]
+			\Procedure{CVRP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}, Q, (q_v)_{v\in V}$}
+			\State $G' \gets$ vollst. Graph auf $V' := \left\lbrace v^{(j)} \mid v \in V, j=1,\dots,q_v\right\rbrace$
+			\State $d'(v^{(i)}, u^{(j)}) := d(v,u)$
+			\State $\tau \gets$ \textsc{TSP-Approx} $\left(G', d'\right)$
+			\For{$v \in V'$}
+				\State $\left(\pi_i^{(v)}\right) \gets$ Teile $\tau$ durch Kantenlöschen in Teilstrecken mit max. $Q$ Knoten,
+				\Statex \hspace{8em} wobei die erste Strecke bei $v$ beginnt.
+				\State $\left(\sigma_i^{(v)}\right) \gets$ Verbinde die zwei Endpunkte von $\pi^{(v)}_i$ mit $s$.
+			\EndFor
+			\State $\left(\sigma_i\right) \gets \left(\sigma_i^{(v)}\right)$ mit $\sum_i d'(\sigma_i^{(v)})$ minimal.
+			\State \Return $\left(\sigma_i\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}	
+	
+	\begin{prop}[Lemma 1 in \cite{CVRPApprox}]\label{CVRPLowerBound}
+		Es gilt: 
+			\[\OPT_\CVRP \geq \max\left\lbrace\OPT_\TSP, \frac{2}{Q}\sum_{v'\in V'}d'(s,v')\right\rbrace\]
+	\end{prop}
+	
+	\begin{proof}
+		Die erste Abschätzung ist klar (eine \CVRP-Route ist insbesondere auch eine \TSP-Tour).
+		
+		Für die zweite Abschätzung betrachte eine optimale Route $\left(\sigma_i^\ast\right)$, wobei $S_i \subseteq V'$ die in der $i$-ten Tour besuchten Knoten seien. Dann gilt offenbar:
+			\[d\left(\sigma_i^\ast\right) \geq 2\cdot \max\left\lbrace d(s,v') \mid v'\in S_i\right\rbrace \geq 2\frac{\sum_{v'\in V'}d(s,v')}{\left|S_i\right|} \geq \frac{2}{Q}\sum_{v'\in S_i}d(s,v')\]
+		
+		Da jeder Knoten aus $V'$ in wenigstens einem $S_i$ enthalten sein muss, folgt damit:
+			\[\OPT_\CVRP = \sum_i d\left(\sigma_i^\ast\right) \geq \frac{2}{Q}\sum_i\sum_{v'\in S_i}d(s,v') \geq \frac{2}{Q}\sum_{v'\in V'}d(s,v')\]
+	\end{proof}
+	
+	\begin{lemma}[Lemma 2 in \cite{CVRPApprox}\footnote{Wie über eine genauere Abschätzung in \cite{TourSpliting} gezeigt wird, erreicht der Algorithmus sogar eine Approximationsgüte von $\rho + \lceil\frac{n'}{Q}\rceil \frac{Q-\rho}{n'}$, wobei $n' := \sum_v q_v$}]\label{AlgCVRPProof}
+		Unter Verwendung eines $\rho$-approximativen Algorithmus für \TSP{} ist \textsc{CVRP-Approx} $(\rho+2)$-approximativ.
+	\end{lemma}	
+	
+	\begin{proof}
+		Sei $n' := \sum_v q_v = \left|V'\right|$ und $m := \frac{n'}{Q}$. Dann gilt für die Summe aller möglichen Routen:
+			\[\sum_{v,i} d'(\sigma_i^{(v)}) = 2m\sum_{v'\in V'}d'(s,v') + (n'-m)d(\tau)\]
+		Denn jeder Knoten ist genau einmal Anfangs- und einmal Endpunkt für jede der $m$ Teilstrecken (erster Summand) und jede Route entsteht durch Weglassen von $m$ Kanten aus der Tour $\tau$ (zweiter Summand).
+		
+		Die beste dieser Routen ist sicher mindestens so gut wie der Durchschnitt aus allen möglichen Routen, also:
+			\[\sum_{i} d'(\sigma_i) = 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + (1-\frac{m}{n'})d(\tau) \leq 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + (1-\frac{m}{n'})\rho\cdot\OPT_\TSP\]
+		Zusammen mit \Cref{CVRPLowerBound} ergibt dies:
+			\[\sum_{i} d'(\sigma_i) \leq \frac{mQ}{n'}\OPT_\CVRP + (1-\frac{m}{n'})\rho\cdot\OPT_\CVRP \leq \left(1+\frac{Q}{n'}+\rho\right)\cdot\OPT_\CVRP\]
+	\end{proof}
+	
 	\section{Algorithmus für \HetTSP}
 	
 	\begin{algorithm}[H]
@@ -210,6 +297,9 @@
 			\Procedure{Decomposition}{$\left(\Hc\right)$}
 			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_i := \text{Zerl. von } \Hc\cap E_i \text{ in Bäume mit genau einer Kante nach } V_i$
 			\State 
+			\State
+			\State
+			\State
 			\State \Return $\left(\Tc_i\right)_{i\geq 0}$
 			\EndProcedure
 		\end{algorithmic}
@@ -237,14 +327,16 @@
 		\caption{FractionalAssignment}\label{AlgFractionalAssignment}
 		\begin{algorithmic}[1]
 			\Procedure{FractionalAssignment}{$\left(\Tc\right)$}
-			\State 
-			\State \Return $\left(x_{ij}\right)$
+			\State $L := \{T \in \Tc\},\quad b(T) := d(T)$, \quad $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta 2^{\lambda_i}$
+			\State $F := \{\{T,i\} \mid T \in \Tc_l, \lambda_i \geq l-1\}$ 
+			\State Bestimme rationales, $L$-überdeckendes $b$-Matching $x_{Ti}$.
+			\State \Return $\left(x_{Ti}\right)$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
 	
 	\begin{prop}[Seite 54 (?) in \cite{bMatching}]
-		
+		$b$-Matching existiert und kann mit Max-Flow in polynomieller Zeit gefunden werden.
 	\end{prop}
 	
 	\begin{algorithm}
@@ -268,9 +360,82 @@
 	
 	\section{Algorithmus für \HetCVRP}
 	
+	\begin{algorithm}[H]
+		\caption{Reduktion}\label{AlgReduktion}
+		\begin{algorithmic}[1]
+			\Procedure{Reduktion}{$G=(V,E), d: E\to \mathbb{R}_{\geq 0}, s\in V, Q, (\lambda_i), (q_v)$}
+			\State $V' := \left\lbrace v^{(j)} \mid v \in V, j=1,\dots,q_v\right\rbrace,\quad E' := \left\lbrace \{v^{(j)},v\} \mid v \in V, j=1,\dots,q_v\right\rbrace$
+			\State $\tilde{G} := (V\cup V', E\cup E'), \quad\quad\quad\quad\quad\quad \tilde{d}(v^{(j)},v) := \frac{d(s,v)}{Q}$, sonst wie $d$
+			\State \Return $\left(\tilde{G}, \tilde{d}, s, Q, (\mu_i)\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}	
+	
+	\begin{lemma}
+		Für jede Instanz $\Ic$ von \HetCVRP{} ist $\Jc := \textsc{Reduktion}(\Ic)$ eine Instanz von \HetTSP{} mit:
+			\[\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\]
+	\end{lemma}
+	
+	\begin{proof}
+		Sei $(\sigma_i)$ eine optimale Lösung von $\Ic$. Definiere $c_i(v) := \#\text{Einheiten von }i\text{ an }v\text{ geliefert}$. Dann gilt also:
+			\[\sum_i c_i(v) = q_v, \text{ für alle } v \in V\]
+		Folglich ist es möglich $U'_i \subseteq V'$ zu wählen, sodass gilt
+			\[\bigcup_i U'_i = V' \text{ und } \left|\left\lbrace v^{(j)} \in U'_i \right\rbrace\right| = c_i(v)\]
+		Definiere weiter $U_i := \left\lbrace v \in V \mid v^{(j)} \in U'_i\right\rbrace$.
+		
+		Seien nun $\tau_i$ minimale \TSP-Touren durch $U'_i \cup U_i \cup \{s\}$. Zusammen sind diese dann insbesondere eine zulässige Lösung für die \HetTSP-Instanz $\Jc$ und es gilt:
+		\begin{align*}
+			d(\tau_i) &\leq 2\cdot \MST(U'_i \cup \{s\}) = 2\cdot \left(\MST(U_i \cup \{s\}) + \sum_{v' \in U'_i} \tilde{d}(v,v')\right) \\
+					  &= 2\cdot \left(\MST(U_i \cup \{s\}) + \sum_{v \in U_i}c_i(v)\frac{d(s,v)}{Q}\right) \leq 2\cdot \left(d(\sigma_i) + d(\sigma_i)\right) = 4 \cdot d(\sigma_i)
+		\end{align*}
+		Die erste Abschätzung gilt, da man eine zulässige Tour erhalten kann, indem man einen minimalen Spannbaum nimmt, alle Kanten verdoppelt und dann eine Eulertour bestimmt. Bei der zweiten Abschätzung ist:
+		\begin{itemize}
+			\item $\MST(U_i \cup \{s\}) \leq d(\sigma_i)$, denn $\sigma_i$ besucht alle Knoten in $U_i$, enthält also insbesondere einen Spannbaum von $U_i \cup \{s\}$.
+			\item $\sum_{v \in U_i}c_i(v)\frac{d(s,v)}{Q} \leq d(\sigma_i)$, denn $\sigma_i$ ist eine zulässige Lösung für das \CVRP-Problem auf $U_i$ mit Bedarfen $c_i(v)$. Damit folgt die Ungleichung aus \Cref{CVRPLowerBound}.
+		\end{itemize}
+		
+		Insgesamt folgt daher:
+			\[\OPT_\HetTSP(\Jc) \leq \max d(\tau_i) \leq 4\cdot \max d(\sigma_i) = 4\cdot \OPT_\HetCVRP(\Ic)\]
+	\end{proof}
+
+	\begin{algorithm}[H]
+		\caption{Deduktion}\label{AlgDeduktion}
+		\begin{algorithmic}[1]
+			\Procedure{Deduktion}{$\Ic, \Jc, (\tau_i)$}
+			\For{$i \gets 1, \dots, k$}
+				\State $c_i(v) := \left|\left\lbrace v^{(j)} \mid v^{(j)} \in \tau_i \right\rbrace\right|$
+				\State $\sigma_i \gets $ \textsc{CVRP-Approx}($G, d, Q, \left(c_i(v)\right)_{v\in V}$)
+			\EndFor
+			\State \Return $\left(\sigma_i\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}	
+	
+	\begin{lemma}
+		Für jede Lösung $(\tau_i)$ von $\Jc$ ist $(\sigma_i)$ eine Lösung von $\Ic$ mit:
+		\[\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\]
+	\end{lemma}
+	
+	\begin{proof}
+		Nach \Cref{AlgCVRPProof} liefert \Cref{AlgCVRP} eine Lösung mit 
+			\[d(\sigma_i) \leq \rho\cdot \OPT_\TSP(U'_i, d) + \frac{2}{Q}\sum_{v'\in U'_i}d'(s,v')\]
+		Ferner ist
+			\[\OPT_\TSP(U'_i, d) \leq d(\tau_i) \text{ und } \frac{2}{Q}\sum_{v'\in U'_i}d'(s,v') \leq d(\tau_i)\]
+		Also zusammen
+			\[d(\sigma_i) \leq (\rho + 1) \cdot d(\tau_i)\]		
+	\end{proof}	
+	
 	\begin{satz}[Theorem 4.1 in \cite{HetCVRP}]
 		Es gibt eine $\Oc(1)$-approximationserhaltende Reduktion von \HetTSP{} auf \HetCVRP.
 	\end{satz}
+	
+	\begin{proof}
+		Verwende \Cref{AlgReduktion} um die Eingabe zu einer Instanz von \HetTSP{} zu machen. Finde eine $\Oc(1)$-approximative Lösung für diese mit Hilfe von \Cref{AlgHetTSP}. Schließlich erhalte aus dieser mit \Cref{AlgDeduktion} eine Lösung der \HetCVRP-Instanz.
+
+		Für diese Lösung gilt:
+		
+		 \[\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i} \subseteq \Oc(1)\cdot\OPT_\HetTSP(\Jc) \subseteq \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\]
+	\end{proof}
 
 	\newpage
 	\nocite{*}

@@ -1,10 +1,75 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20160326182644" modified="D:20160507121707" title="Analysis I - Zusammenfassung"/>
+<info created="D:20160326182644" modified="D:20160507152948" title="Analysis I - Zusammenfassung"/>
 <preamble>\usepackage[utf8]{inputenc}
+
 \usepackage[ngerman]{babel}
-\usepackage{amsmath, amssymb}</preamble>
+
+\usepackage{amsmath, amsthm, amssymb, stmaryrd, color, graphicx, mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{cleveref}			%Referenzen mit Name
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\slash\slash$ #1}
+\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2} \algorithmicend\ \algorithmicfor}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{erin}[defn]{Erinnerung}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{beob}[defn]{Beobachtung}
+\newtheorem{aufg}[defn]{Aufgabe}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Oc}{\mathcal{O}}
+
+
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+
+\newcommand{\OPT}{\mathrm{OPT}}
+\newcommand{\MST}{\mathrm{MST}}
+
+\newcommand{\HetTSP}{\textsc{HetTSP}}
+\newcommand{\HetCVRP}{\textsc{HetCVRP}}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -260,27 +325,27 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<text layer="alpha" matrix="1 0 0 1 50.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="116.892" height="9.963" depth="0" halign="center" valign="top" size="Large">\textbf{Metrisches TSP:}</text>
+<text layer="alpha" matrix="1 0 0 1 50.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="116.893" height="10.096" depth="0" halign="center" valign="top" size="Large">\textbf{Metrisches TSP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5980.01 -479.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="39.314" depth="34.41" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item \textbf{Lsgen:} Tour $\tau$ durch ganz $V$
 \item \textbf{Ziel:} Minimiere $d(\tau)$
 </text>
-<text matrix="1 0 0 1 50.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="121.418" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes TSP:}</text>
+<text matrix="1 0 0 1 50.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="121.418" height="9.662" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes TSP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5980.01 -655.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="65.189" depth="60.34" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt $s \in V$
 \item $k$ Fahrzeuge
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen und gemeinsam ganz $V$ abdecken 
 \item \textbf{Ziel:} Minimiere $\max d(\tau_i)$</text>
-<text matrix="1 0 0 1 50.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="127.495" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes TSP:}</text>
+<text matrix="1 0 0 1 50.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="127.496" height="9.662" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes TSP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5980.01 -879.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="66.671" depth="61.84" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt $s \in V$
 \item $k$ Fahrzeuge mit Geschw. $(\lambda_i)_{i=1}^k$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen und gemeinsam ganz $V$ abdecken 
 \item \textbf{Ziel:} Minimiere $\max \frac{d(\tau_i)}{\lambda_i}$</text>
-<text matrix="1 0 0 1 434.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="137.109" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes CVRP:}</text>
+<text matrix="1 0 0 1 434.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="137.109" height="9.662" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes CVRP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5596.01 -655.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="93.05" depth="88.27" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
@@ -288,7 +353,7 @@ h
 \item $k$ Fahrzeuge mit einheitlicher Kapazität $Q$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $\max d(\tau_i)$</text>
-<text matrix="1 0 0 1 434.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="143.186" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes CVRP:}</text>
+<text matrix="1 0 0 1 434.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="143.187" height="9.662" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes CVRP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5596.01 -879.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="94.532" depth="89.77" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
@@ -296,7 +361,7 @@ h
 \item $k$ Fahrzeuge mit Geschw. $\{\lambda_i\}$ und einheitlicher Kapazität $Q$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $\max \frac{d(\tau_i)}{\lambda_i}$</text>
-<text matrix="1 0 0 1 434.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="51.391" height="9.843" depth="0" halign="center" valign="top" size="Large">\textbf{CVRP:}</text>
+<text matrix="1 0 0 1 434.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="51.39" height="9.663" depth="0" halign="center" valign="top" size="Large">\textbf{CVRP:}</text>
 <text matrix="93.6876 0 0 1.44607 -5596.01 -479.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="71.154" depth="66.33" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
