@@ -78,12 +78,18 @@
 \newcommand{\Hc}{\mathcal{H}}
 \newcommand{\Tc}{\mathcal{T}}
 \newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Oc}{\mathcal{O}}
+
 
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
 
 \newcommand{\OPT}{\mathrm{OPT}}
+\newcommand{\MST}{\mathrm{MST}}
+
+\newcommand{\HetTSP}{\textsc{HetTSP}}
+\newcommand{\HetCVRP}{\textsc{HetCVRP}}
 
 
 \renewcommand*\theenumi{\alph{enumi}}
@@ -124,7 +130,7 @@
 	% Author and supervisor
 	\begin{minipage}{0.4\textwidth}
 		\begin{flushleft} \large
-			\emph{Vorgelegt von:}\\
+			\emph{Zusammengestellt:}\\
 			Lukas \textsc{Graf}
 		\end{flushleft}
 	\end{minipage}
@@ -142,9 +148,9 @@
 		\includegraphics[width=1\textwidth]{Problemdefinitionen.pdf}
 	
 	\newpage
-	\section{Algorithmus für HetTSP}
+	\section{Algorithmus für \HetTSP}
 	
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{HetTSP-Approx}\label{AlgHetTSP}
 		\begin{algorithmic}[1]
 			\Procedure{HetTSP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
@@ -162,7 +168,13 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{algorithm}
+	\begin{satz}[Theorem 1.1 in \cite{HetCVRP}]
+		\Cref{AlgHetTSP} ist ein $\Oc(1)$-approximativer Algorithmus für \HetTSP.
+	\end{satz}
+	
+	\subsection{Level-Prime}
+	
+	\begin{algorithm}[H]
 		\caption{Level-Prime}\label{AlgLevelPrime}
 		\begin{algorithmic}[1]
 			\Procedure{Level-Prime}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
@@ -173,7 +185,26 @@
 		\end{algorithmic}
 	\end{algorithm}	
 	
-	\begin{algorithm}
+	\begin{lemma}[Theorem 3.3 in \cite{HetCVRP}]
+		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
+		\begin{itemize}
+			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
+			\item $\forall k\geq 0: \sum_{l\geq k} d(H_l) \leq 8\cdot \MST(G/V_{<k})$
+		\end{itemize}
+	\end{lemma}
+	
+	\begin{kor}[Korollar 3.5 in \cite{HetCVRP}]
+		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
+		\begin{itemize}
+			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
+			\item $\forall k\geq 1: \sum_{l>k} d(H_l) \leq 8\cdot \sum_{l\geq k}2^l\mu_l$
+		\end{itemize}
+	\end{kor}
+	
+	
+	\subsection{Decomposition-Algorithmus}
+	
+	\begin{algorithm}[H]
 		\caption{Decomposition}\label{AlgDecomposition}
 		\begin{algorithmic}[1]
 			\Procedure{Decomposition}{$\left(\Hc\right)$}
@@ -183,9 +214,26 @@
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
+	
+	\begin{defn}[Definition 3.1 in \cite{HetCVRP}]
+		Ein Wald $\Tc = \bigcup_{l\geq 0} \Tc_l$ aus Bäumen mit Wurzel $s$ heißt $(\alpha, \beta)$-zuweisbar, wenn gilt:
+		\begin{itemize}
+			\item Für alle $T \in \Tc_l$ gilt: $d(T) \leq \alpha 2^l M$ \\
+			\textit{d.h. ein Baum aus $\Tc_l$ kann mit Geschw. $2^l$ in $\Oc(\alpha M)$ besucht werden.}
+			\item Für alle $k \geq 1$ gilt: $\sum_{l > k} d(\Tc_l) \leq \beta M \sum_{l\geq k} 2^l\mu_l$
+			
+			\textit{d.h. die Fahrzeuge mit Geschw. $\geq 2^k$ können den Wald $\Tc_{>k}$ in $\Oc(\beta M)$ besuchen.}
+		\end{itemize}
+	\end{defn}
+	
+	\begin{lemma}[Lemma 3.11 in \cite{HetCVRP}]
+		Die von \cref{AlgDecomposition} bestimmte Zerlegung $\Tc = (\Tc_i)_{i\geq 0}$ ist $(6, 40)$-zuweisbar.
+	\end{lemma}
+	
+	
+	\subsection{Assignment-Algorithmen}
 
-
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{FractionalAssignment}\label{AlgFractionalAssignment}
 		\begin{algorithmic}[1]
 			\Procedure{FractionalAssignment}{$\left(\Tc\right)$}
@@ -195,6 +243,9 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
+	\begin{prop}[Seite 54 (?) in \cite{bMatching}]
+		
+	\end{prop}
 	
 	\begin{algorithm}
 		\caption{RoundingAssignment}\label{AlgRoundingAssignment}
@@ -206,8 +257,20 @@
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\newpage	
-	\section{Sätze}
+	\begin{prop}[Theorem 1 in \cite{Rounding}]
+		
+	\end{prop}
+	
+	\begin{lemma}[Lemma 3.2 in \cite{HetCVRP}]
+		Gegeben einen $(\alpha, \beta)$-zuweisbaren Wald, liefern \cref{AlgFractionalAssignment} und \cref{AlgRoundingAssignment} eine $(4\alpha+2\beta)$-approximative Lösung für \HetTSP.
+	\end{lemma}
+	
+	
+	\section{Algorithmus für \HetCVRP}
+	
+	\begin{satz}[Theorem 4.1 in \cite{HetCVRP}]
+		Es gibt eine $\Oc(1)$-approximationserhaltende Reduktion von \HetTSP{} auf \HetCVRP.
+	\end{satz}
 
 	\newpage
 	\nocite{*}
