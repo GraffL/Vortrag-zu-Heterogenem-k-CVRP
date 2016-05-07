@@ -33,6 +33,12 @@
 \usepackage{cleveref}			%Referenzen mit Name
 
 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\slash\slash$ #1}
+\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2} \algorithmicend\ \algorithmicfor}
+
+
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
@@ -67,13 +73,17 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
-\newcommand{\I}{\mathcal{I}}
-\newcommand{\J}{\mathcal{J}}
-\newcommand{\C}{\mathcal{C}}
-\newcommand{\D}{\mathcal{D}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Sc}{\mathcal{S}}
+
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
+
+\newcommand{\OPT}{\mathrm{OPT}}
 
 
 \renewcommand*\theenumi{\alph{enumi}}
@@ -126,6 +136,78 @@
 	\end{minipage}
 	
 	\end{titlepage}
+	
+	\section{Problemübersicht}
+	
+		\includegraphics[width=1\textwidth]{Problemdefinitionen.pdf}
+	
+	\newpage
+	\section{Algorithmus für HetTSP}
+	
+	\begin{algorithm}
+		\caption{HetTSP-Approx}\label{AlgHetTSP}
+		\begin{algorithmic}[1]
+			\Procedure{HetTSP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
+			\State Rate $M$ mit $\frac{M}{2} \leq \OPT \leq M$
+			\State $\Hc := \left(H_i\right)_{i\geq 0} \gets$ \textsc{Level-Prime} $\left(G, d\right)$
+			\Statex \Comment{$\Hc$ erfüllt: Wurzel-Blatt Pfade haben aufsteigende Knoten-Level}
+			\Statex \Comment{\phantom{$\Hc$ erfüllt:} und $\forall i: \sum_{j\geq i}d\left(H_j\right)\leq 8 M \sum_{j\geq i-1}2^j\mu_j$ (wenn $M$ korrekt geraten)}
+			\State $\Tc := \left(\Tc_i\right)_{i\geq 0} \gets$ \textsc{Decomposition} $\left(\Hc\right)$
+			\Statex \Comment{$\Tc$ ist $\left(6, 40\right)$-zuweisbarer Wald}
+			\State $\left(x_{ij}\right) \gets$ \textsc{FractionalAssignment}  $\left(\Tc\right)$
+			\State $\left(\tau_i\right) \gets$ \textsc{RoundingAssignment} $\left(x_{ij}\right)$
+			\Statex \Comment{$\Tc$ ist $\left(\alpha, \beta\right)$-zuweisbar $\Rightarrow$ $\left(\tau_i\right)$ ist $\left(4\alpha+2\beta\right)$-approx.}
+			\State \Return $\left(\tau_i\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{Level-Prime}\label{AlgLevelPrime}
+		\begin{algorithmic}[1]
+			\Procedure{Level-Prime}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
+			\State $V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace,\quad V_i := \left\lbrace v \in V \mid 2^{i-1}M < d(s,v) \leq 2^i M\right\rbrace$
+			\LineFor{$i\geq 0$}{$H_i \gets$ Minimaler Spannbaum auf $G\left[V_{\leq i}\right]/V_{<i}$}
+			\State \Return $\left(H_i\right)_{i\geq 0}$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}	
+	
+	\begin{algorithm}
+		\caption{Decomposition}\label{AlgDecomposition}
+		\begin{algorithmic}[1]
+			\Procedure{Decomposition}{$\left(\Hc\right)$}
+			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_i := \text{Zerl. von } \Hc\cap E_i \text{ in Bäume mit genau einer Kante nach } V_i$
+			\State 
+			\State \Return $\left(\Tc_i\right)_{i\geq 0}$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+
+
+	\begin{algorithm}
+		\caption{FractionalAssignment}\label{AlgFractionalAssignment}
+		\begin{algorithmic}[1]
+			\Procedure{FractionalAssignment}{$\left(\Tc\right)$}
+			\State 
+			\State \Return $\left(x_{ij}\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	
+	
+	\begin{algorithm}
+		\caption{RoundingAssignment}\label{AlgRoundingAssignment}
+		\begin{algorithmic}[1]
+			\Procedure{RoundingAssignment}{$\left(x_{ij}\right)$}
+			\State 
+			\State \Return $\left(\tau_i\right)$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\newpage	
+	\section{Sätze}
 
 	\newpage
 	\nocite{*}

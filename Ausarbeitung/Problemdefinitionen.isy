@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipestyle SYSTEM "ipe.dtd">
 <ipestyle name="Problemdefinitionen">
-	<layout paper="610 580" origin="0 0" frame="610 580" crop="yes"/>
+	<layout paper="610 650" origin="0 0" frame="610 650" crop="yes"/>
 </ipestyle>

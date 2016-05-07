@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20160326182644" modified="D:20160502142302" title="Analysis I - Zusammenfassung"/>
+<info created="D:20160326182644" modified="D:20160507121707" title="Analysis I - Zusammenfassung"/>
 <preamble>\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath, amssymb}</preamble>
@@ -255,49 +255,49 @@ h
 <tiling name="rising" angle="30" step="4" width="1"/>
 </ipestyle>
 <ipestyle name="Problemdefinitionen">
-<layout paper="608 576" origin="0 0" frame="608 576"/>
+<layout paper="610 650" origin="0 0" frame="610 650"/>
 </ipestyle>
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<text layer="alpha" matrix="1 0 0 1 50.887 -200.567" transformations="translations" pos="64 768" stroke="black" type="label" width="116.892" height="9.963" depth="0" halign="center" valign="top" size="Large">\textbf{Metrisches TSP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5980.01 -543.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="39.314" depth="34.41" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text layer="alpha" matrix="1 0 0 1 50.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="116.892" height="9.963" depth="0" halign="center" valign="top" size="Large">\textbf{Metrisches TSP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5980.01 -479.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="39.314" depth="34.41" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item \textbf{Lsgen:} Tour $\tau$ durch ganz $V$
 \item \textbf{Ziel:} Minimiere $d(\tau)$
 </text>
-<text matrix="1 0 0 1 50.887 -376.567" transformations="translations" pos="64 768" stroke="black" type="label" width="121.418" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes TSP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5980.01 -719.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="65.189" depth="60.34" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text matrix="1 0 0 1 50.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="121.418" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes TSP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5980.01 -655.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="65.189" depth="60.34" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt $s \in V$
 \item $k$ Fahrzeuge
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen und gemeinsam ganz $V$ abdecken 
 \item \textbf{Ziel:} Minimiere $\max d(\tau_i)$</text>
-<text matrix="1 0 0 1 50.887 -600.567" transformations="translations" pos="64 768" stroke="black" type="label" width="127.495" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes TSP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5980.01 -943.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="66.671" depth="61.84" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text matrix="1 0 0 1 50.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="127.495" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes TSP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5980.01 -879.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="66.671" depth="61.84" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt $s \in V$
 \item $k$ Fahrzeuge mit Geschw. $(\lambda_i)_{i=1}^k$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen und gemeinsam ganz $V$ abdecken 
 \item \textbf{Ziel:} Minimiere $\max \frac{d(\tau_i)}{\lambda_i}$</text>
-<text matrix="1 0 0 1 434.887 -376.567" transformations="translations" pos="64 768" stroke="black" type="label" width="137.109" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes CVRP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5596.01 -719.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="93.05" depth="88.27" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text matrix="1 0 0 1 434.887 -312.567" transformations="translations" pos="64 768" stroke="black" type="label" width="137.109" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Homogenes CVRP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5596.01 -655.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="93.05" depth="88.27" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
 \item Bedarfe $(q_v)_{v\in V}$
 \item $k$ Fahrzeuge mit einheitlicher Kapazität $Q$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $\max d(\tau_i)$</text>
-<text matrix="1 0 0 1 434.887 -600.567" transformations="translations" pos="64 768" stroke="black" type="label" width="143.186" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes CVRP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5596.01 -943.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="94.532" depth="89.77" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text matrix="1 0 0 1 434.887 -536.567" transformations="translations" pos="64 768" stroke="black" type="label" width="143.186" height="9.843" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes CVRP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5596.01 -879.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="94.532" depth="89.77" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
 \item Bedarfe $(q_v)_{v\in V}$
 \item $k$ Fahrzeuge mit Geschw. $\{\lambda_i\}$ und einheitlicher Kapazität $Q$
 \item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $\max \frac{d(\tau_i)}{\lambda_i}$</text>
-<text matrix="1 0 0 1 434.887 -200.567" transformations="translations" pos="64 768" stroke="black" type="label" width="51.391" height="9.843" depth="0" halign="center" valign="top" size="Large">\textbf{CVRP:}</text>
-<text matrix="93.6876 0 0 1.44607 -5596.01 -543.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="71.154" depth="66.33" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+<text matrix="1 0 0 1 434.887 -136.567" transformations="translations" pos="64 768" stroke="black" type="label" width="51.391" height="9.843" depth="0" halign="center" valign="top" size="Large">\textbf{CVRP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5596.01 -479.793" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="71.154" depth="66.33" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
 \item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
 \item Startpunkt/Depot $s \in V$
 \item Bedarfe $(q_v)_{v\in V}$ und Kapazität $Q$
