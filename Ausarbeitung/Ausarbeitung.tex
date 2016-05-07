@@ -1,0 +1,134 @@
+\listfiles
+
+\documentclass[a4paper,ngerman,12pt,bibtotoc]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand\tablename{Tafel}}
+
+\usepackage{amsmath, amsthm, amssymb, stmaryrd, color, graphicx, mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{literatur}
+
+\usepackage{titling}
+
+\usepackage[all]{xy}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{cleveref}			%Referenzen mit Name
+
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{erin}[defn]{Erinnerung}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{beob}[defn]{Beobachtung}
+\newtheorem{aufg}[defn]{Aufgabe}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+\setcounter{tocdepth}{2}
+
+\newenvironment{indentblock}{%
+	\list{}{\leftmargin\leftmargin}%
+	\item\relax
+}{%
+\endlist
+}
+
+
+
+\begin{document}
+	\author{Lukas Graf}
+	\date{Letzte Aktualisierung: \today}
+	
+	\selectlanguage{ngerman}
+	\thispagestyle{empty}
+	
+	
+	\begin{titlepage}\center
+	\textsc{\LARGE Universität Augsburg}\\[1.5cm]
+	
+	\textsc{\Large Institut für Mathematik}\\[2.5cm]
+	
+	% Title
+	{\Large Seminar\glqq ausarbeitung\grqq \\[1cm]}
+	zu einem Vortrag im Seminar Spieltheorie und Approximationsalgorithmen im SS 2016 zum Thema\\[1.5cm]
+	{\huge Capacitated Vehicle Routing with Non-Uniform Speeds}
+		
+	
+	\vfill
+	
+	% Author and supervisor
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Vorgelegt von:}\\
+			Lukas \textsc{Graf}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{Betreut von:} \\
+			M. Sc. Manuel \textsc{Surek},\\Prof. Dr. Tobias \textsc{Harks}
+		\end{flushright}
+	\end{minipage}
+	
+	\end{titlepage}
+
+	\newpage
+	\nocite{*}
+	\printbibliography		
+			
+\end{document}
