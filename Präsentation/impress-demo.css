@@ -145,9 +145,9 @@ a:focus {
 */
 
 .step {
-	
+	border:2px #000000 solid;
     position: relative;
-    width: 900px;
+    width: 1200px;
 	height: 700px;
     padding: 20px;
     margin: 20px auto;
@@ -212,7 +212,7 @@ a:focus {
     There is no content in it, so we make sure it's not visible because we want
     to be able to click on other steps.
 */
-#overview { display: none }
+ #overview { display: none } 
 
 /*
     We also make other steps visible and give them a pointer cursor using the
@@ -286,7 +286,9 @@ h3 {text-align:center; font-size:125%;}
     background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));*/}
-	
+
+.credits {transition: opacity 5s;}	
+.impress-on-overview .credits {opacity: 1;}
 	
 .impress-on-overview .impress-container {width:100% !important;}
 .impress-on-overview .impress-container {transition: width 2s;}
