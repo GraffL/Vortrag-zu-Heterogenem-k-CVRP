@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipe SYSTEM "ipe.dtd">
+<ipe version="70107" creator="Ipe 7.2.2">
+<info created="D:20160326182644" modified="D:20160508174618" title="Analysis I - Zusammenfassung"/>
+<preamble>\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath, amsthm, amssymb, stmaryrd, color, graphicx, mathtools, nicefrac}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{cleveref}			%Referenzen mit Name
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\slash\slash$ #1}
+\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2} \algorithmicend\ \algorithmicfor}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{erin}[defn]{Erinnerung}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{beob}[defn]{Beobachtung}
+\newtheorem{aufg}[defn]{Aufgabe}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Oc}{\mathcal{O}}
+
+
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+
+\newcommand{\OPT}{\mathrm{OPT}}
+\newcommand{\MST}{\mathrm{MST}}
+
+\newcommand{\TSP}{\textbf{TSP}}
+\newcommand{\HomTSP}{\textbf{HomTSP}}
+\newcommand{\HetTSP}{\textbf{HetTSP}}
+\newcommand{\CVRP}{\textbf{CVRP}}
+\newcommand{\HetCVRP}{\textbf{HetCVRP}}</preamble>
+<ipestyle name="basic">
+<symbol name="arrow/arc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/farc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/ptarc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fptarc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path>
+</symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</group>
+</symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+</path>
+</symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+-0.5 -0.5 m
+0.5 -0.5 l
+0.5 0.5 l
+-0.5 0.5 l
+h
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group>
+<path fill="sym-stroke">
+-0.43 -0.57 m
+0.57 0.43 l
+0.43 0.57 l
+-0.57 -0.43 l
+h
+</path>
+<path fill="sym-stroke">
+-0.43 0.57 m
+0.57 -0.43 l
+0.43 -0.57 l
+-0.57 0.43 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="arrow/fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/linear(spx)">
+<path stroke="sym-stroke" pen="sym-pen">
+-1 0.333 m
+0 0 l
+-1 -0.333 l
+</path>
+</symbol>
+<symbol name="arrow/fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<pen name="heavier" value="0.8"/>
+<pen name="fat" value="1.2"/>
+<pen name="ultrafat" value="2"/>
+<symbolsize name="large" value="5"/>
+<symbolsize name="small" value="2"/>
+<symbolsize name="tiny" value="1.1"/>
+<arrowsize name="large" value="10"/>
+<arrowsize name="small" value="5"/>
+<arrowsize name="tiny" value="3"/>
+<color name="red" value="1 0 0"/>
+<color name="green" value="0 1 0"/>
+<color name="blue" value="0 0 1"/>
+<color name="yellow" value="1 1 0"/>
+<color name="orange" value="1 0.647 0"/>
+<color name="gold" value="1 0.843 0"/>
+<color name="purple" value="0.627 0.125 0.941"/>
+<color name="gray" value="0.745"/>
+<color name="brown" value="0.647 0.165 0.165"/>
+<color name="navy" value="0 0 0.502"/>
+<color name="pink" value="1 0.753 0.796"/>
+<color name="seagreen" value="0.18 0.545 0.341"/>
+<color name="turquoise" value="0.251 0.878 0.816"/>
+<color name="violet" value="0.933 0.51 0.933"/>
+<color name="darkblue" value="0 0 0.545"/>
+<color name="darkcyan" value="0 0.545 0.545"/>
+<color name="darkgray" value="0.663"/>
+<color name="darkgreen" value="0 0.392 0"/>
+<color name="darkmagenta" value="0.545 0 0.545"/>
+<color name="darkorange" value="1 0.549 0"/>
+<color name="darkred" value="0.545 0 0"/>
+<color name="lightblue" value="0.678 0.847 0.902"/>
+<color name="lightcyan" value="0.878 1 1"/>
+<color name="lightgray" value="0.827"/>
+<color name="lightgreen" value="0.565 0.933 0.565"/>
+<color name="lightyellow" value="1 1 0.878"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<textsize name="large" value="\large"/>
+<textsize name="small" value="\small"/>
+<textsize name="tiny" value="\tiny"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
+<textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts (~3 mm)" value="8"/>
+<gridsize name="16 pts (~6 mm)" value="16"/>
+<gridsize name="32 pts (~12 mm)" value="32"/>
+<gridsize name="10 pts (~3.5 mm)" value="10"/>
+<gridsize name="20 pts (~7 mm)" value="20"/>
+<gridsize name="14 pts (~5 mm)" value="14"/>
+<gridsize name="28 pts (~10 mm)" value="28"/>
+<gridsize name="56 pts (~20 mm)" value="56"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<tiling name="falling" angle="-60" step="4" width="1"/>
+<tiling name="rising" angle="30" step="4" width="1"/>
+</ipestyle>
+<ipestyle name="Problemdefinitionen2">
+<layout paper="580 620" origin="0 0" frame="580 620"/>
+</ipestyle>
+<page>
+<layer name="alpha"/>
+<layer name="beta"/>
+<view layers="alpha beta" active="beta"/>
+<path layer="beta" matrix="1 0 0 2.03385 288 -1161.36" stroke="lightgray" fill="lightgray" pen="ultrafat" cap="1" join="1">
+16 688 m
+16 576 l
+208 576 l
+208 688 l
+h
+</path>
+<path matrix="1 0 0 1.71429 0 -941.5" stroke="lightgray" fill="lightgray" pen="ultrafat" cap="1" join="1">
+16 688 m
+16 576 l
+208 576 l
+208 688 l
+h
+</path>
+<path matrix="1.0011 0 0 1.46102 287.771 -402.316" stroke="lightgray" fill="lightgray" pen="ultrafat" cap="1" join="1">
+16 688 m
+16 576 l
+208 576 l
+208 688 l
+h
+</path>
+<path matrix="1 0 0 1 0 -130.072" stroke="lightgray" fill="lightgray" pen="ultrafat" cap="1" join="1">
+16 688 m
+16 576 l
+208 576 l
+208 688 l
+h
+</path>
+<text layer="alpha" matrix="1 0 0 1 50.887 -218.639" transformations="translations" pos="64 768" stroke="black" type="label" width="116.893" height="10.096" depth="0" halign="center" valign="top" size="Large">\textbf{Metrisches TSP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5980.01 -561.865" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="39.314" depth="34.41" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+\item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
+\item \textbf{Lsgen:} Tour $\tau$ durch ganz $V$
+\item \textbf{Ziel:} Minimiere $d(\tau)$
+</text>
+<text matrix="1.18512 0 0 -0.61458 330.292 1068.54" transformations="translations" pos="64 768" stroke="black" type="label" width="141.394" height="10.095" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes k-TSP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5692.01 -513.865" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="66.42" depth="61.58" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+\item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
+\item Startpunkt $s \in V$
+\item $k$ Fahrzeuge mit Geschw. $(2^{\lambda_i})_{i=1}^k$
+\item \textbf{Lsgen:} Touren $(\tau_i)$, die bei $s$ beginnen und gemeinsam ganz $V$ abdecken 
+\item \textbf{Ziel:} Minimiere $\max \frac{d(\tau_i)}{2^{\lambda_i}}$</text>
+<text matrix="1 0 0 1 332.286 -539.582" transformations="translations" pos="64 768" stroke="black" type="label" width="157.085" height="10.095" depth="2.79" halign="center" valign="top" size="Large">\textbf{Heterogenes k-CVRP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5692.01 -881.865" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="98.261" depth="93.5" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+\item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
+\item Startpunkt/Depot $s \in V$ 
+\item einheitliche Kapazität $Q$
+\item Bedarfe $(q_v)_{v\in V}, q_v \in \{0, ..., Q\}$
+\item $k$ Fahrzeuge mit Geschw. $(2^{\lambda_i})$
+\item \textbf{Lsgen:} Touren $(\sigma_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
+\item \textbf{Ziel:} Minimiere $\max \frac{d(\sigma_i)}{2^{\lambda_i}}$</text>
+<text matrix="1 0 0 1 50.887 -538.639" transformations="translations" pos="64 768" stroke="black" type="label" width="145.137" height="10.756" depth="3.59" halign="center" valign="top" size="Large">\textbf{(Metrisches) CVRP:}</text>
+<text matrix="93.6876 0 0 1.44607 -5980.01 -881.865" transformations="translations" pos="64 752" stroke="black" type="minipage" width="188.974" height="81.11" depth="76.3" valign="top" style="itemize">\item Vollständiger Graph $G=(V,E)$
+\item Metr. Abstandsfunktion $d: E\to\mathbb{R}$
+\item Startpunkt/Depot $s \in V$ 
+\item Kapazität $Q$ (polynomiell in Eingabe)
+\item Bedarfe $(q_v)_{v\in V}, q_v \in \{0, ..., Q\}$
+\item \textbf{Lsgen:} Route $(\sigma)$, die bei $s$ beginn alle Bedarfe erfüllen nie mehr als $Q$ Elemente transportiert
+\item \textbf{Ziel:} Minimiere $d(\sigma)$</text>
+<text layer="beta" matrix="8.61241 0 0 1.04575 -310.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.139" depth="8.17" valign="top" style="center">$\rho$-approximative Algorithmen
+
+z.B. Christofides ($\rho = 1,5$)</text>
+<text matrix="8.61241 0 0 1.04575 -309.938 -263.567" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="6.89" depth="1.91" valign="top" style="center">$\rho+2$-approximativer Algorithmus</text>
+<path matrix="1 0 0 1 112 -82.0716" stroke="black" pen="ultrafat" join="1" arrow="normal/large">
+48 480 m
+48 352 l
+</path>
+<text matrix="0 -1 1 0 -285.346 459.274" pos="64 480" stroke="black" type="minipage" width="112" height="13.139" depth="8.17" valign="top" style="center">Tour-Spliting-Heuristik
+
+(Lemma 2 in [MH85])</text>
+<text matrix="8.61241 0 0 1.04575 -22.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-approximativer Algorithmus
+
+(Theorem 1.1 in [G\o+10])</text>
+<text matrix="8.61241 0 0 1.04575 -21.938 -263.567" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="7.473" depth="2.49" valign="top">$\mathcal{O}(1)$-approximativer Algorithmus</text>
+<text matrix="0 -1 1 0 72.6396 459.274" pos="64 480" stroke="black" type="minipage" width="128" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-Reduktion:
+
+(Theorem 4.1 in [G\o+10])</text>
+<text matrix="1 0 0 1 20.8138 -89.3042" pos="416 384" stroke="black" type="minipage" width="80" height="11.056" depth="6.08" valign="top" size="small" style="center">Instanz $\mathcal{I}$ 
+
+von HetCVRP</text>
+<text matrix="1 0 0 1 -63.0921 16" pos="416 384" stroke="black" type="minipage" width="176" height="12.177" depth="7.2" valign="top" size="small" style="center">Instanz $\mathcal{J}$ von HetTSP mit 
+
+$\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)$</text>
+<path matrix="-0.227546 0 0 1.23292 586.489 -75.9387" stroke="black" pen="heavier" join="1" arrow="normal/normal">
+464 304 m
+464 368 l
+</path>
+<text matrix="1 0 0 1 14.1708 16.0309" pos="220.764 384.62" stroke="black" type="minipage" width="67.896" height="12.445" depth="7.48" valign="top" size="small" style="center">Lsg. $(\tau_i)$
+
+$\Oc(1)$-approx.</text>
+<path matrix="3.61905 0 0 1 -860.957 0" stroke="black" pen="heavier" join="1" arrow="normal/normal">
+335.185 390.468 m
+321.793 390.468 l
+</path>
+<path matrix="1 0 0 1 -64 -0.931602" stroke="black" join="1" arrow="normal/normal">
+399.353 407.766 m
+399.353 392.142 l
+</path>
+<path matrix="-14.3397 0 0 -1.22884 6925.85 753.016" stroke="black" pen="heavier" join="1" arrow="normal/normal">
+464 304 m
+464 368 l
+</path>
+<text matrix="1 0 0 1 19.7505 -90.5444" pos="220.764 384.62" stroke="black" type="minipage" width="148.803" height="12.445" depth="7.48" valign="top" size="small" style="center">Lsg. $(\sigma_i)$ mit
+
+$\max \nicefrac{d(\sigma_i)}{2^{\lambda_i}} \in \Oc(1)\cdot \max \nicefrac{d(\tau_i)}{2^{\lambda_i}}$</text>
+<path matrix="1 0 0 1 -64 0" stroke="black" pen="ultrafat" join="1" arrow="normal/normal">
+560 416 m
+624 416 l
+624 256 l
+560 256 l
+</path>
+<text matrix="1 0 0 1 -0.557986 -13.9496" pos="240 288" stroke="black" type="label" width="278.954" height="-0.007" depth="6.35" valign="baseline">$\underbrace{\hspace{28em}}$</text>
+<path matrix="1.05404 0 0 1 -19.7368 5.02187" stroke="black" join="1" arrow="normal/normal">
+208 336 m
+272 336 l
+</path>
+<path matrix="0.93797 0 0 1.02273 29.8224 -9.81392" stroke="0">
+316.366 407.177 m
+316.366 431.813 l
+480.773 431.813 l
+480.773 407.177 l
+h
+</path>
+</page>
+</ipe>

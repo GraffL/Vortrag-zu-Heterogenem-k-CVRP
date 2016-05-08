@@ -1,0 +1,146 @@
+\listfiles
+
+\documentclass[a4paper,ngerman,12pt,bibtotoc]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand\tablename{Tafel}}
+
+\usepackage{amsmath, amsthm, amssymb, stmaryrd, color, graphicx, mathtools}
+\usepackage{setspace}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{stmaryrd}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{literatur}
+
+\usepackage{titling}
+
+\usepackage[all]{xy}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{cleveref}			%Referenzen mit Name
+
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\slash\slash$ #1}
+\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2} \algorithmicend\ \algorithmicfor}
+
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{erin}[defn]{Erinnerung}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{beob}[defn]{Beobachtung}
+\newtheorem{aufg}[defn]{Aufgabe}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Oc}{\mathcal{O}}
+
+
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+
+\newcommand{\OPT}{\mathrm{OPT}}
+\newcommand{\MST}{\mathrm{MST}}
+
+\newcommand{\TSP}{\textbf{TSP}}
+\newcommand{\HomTSP}{\textbf{HomTSP}}
+\newcommand{\HetTSP}{\textbf{HetTSP}}
+\newcommand{\CVRP}{\textbf{CVRP}}
+\newcommand{\HetCVRP}{\textbf{HetCVRP}}
+
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+\setcounter{tocdepth}{2}
+
+\newenvironment{indentblock}{%
+	\list{}{\leftmargin\leftmargin}%
+	\item\relax
+}{%
+\endlist
+}
+
+
+
+\begin{document}
+	\begin{minipage}{0.7\textwidth}
+		\begin{flushleft}
+			Universität Augsburg \\
+			Seminar: Approximationsalgorithmen und Spieltheorie \\
+			Dozent: Prof. Dr. Tobias \textsc{Harks} 
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+		\begin{flushright}
+			Lukas \textsc{Graf} \\
+			12. Mai 2016 \\
+			Sommersemester 2016
+		\end{flushright}
+	\end{minipage}
+	
+	\hrulefill
+	\vspace{-1em}
+	\begin{center}\LARGE Heterogenes k-CVRP\end{center}
+	\vspace{-1.4em}
+	\hrulefill
+	\vspace{-1.4em}
+	
+	\hrulefill
+
+	\section*{Übersicht}
+	
+		\includegraphics[width=1\textwidth]{Problemdefinitionen2.pdf}
+	
+	\cite{CVRPApprox}
+	\newpage
+	\nocite{*}
+	\printbibliography		
+			
+\end{document}
