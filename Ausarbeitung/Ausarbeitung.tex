@@ -225,14 +225,14 @@
 	\end{lemma}	
 	
 	\begin{proof}
-		Sei $n' := \sum_v q_v = \left|V'\right|$ und $m := \frac{n'}{Q}$. Dann gilt für die Summe aller möglichen Routen:
-			\[\sum_{v,i} d'(\sigma_i^{(v)}) = 2m\sum_{v'\in V'}d'(s,v') + (n'-m)d(\tau)\]
-		Denn jeder Knoten ist genau einmal Anfangs- und einmal Endpunkt für jede der $m$ Teilstrecken (erster Summand) und jede Route entsteht durch Weglassen von $m$ Kanten aus der Tour $\tau$ (zweiter Summand).
+		Sei $n' := \sum_v q_v = \left|V'\right|$ und $m := \lceil\frac{n'}{Q}\rceil$. Dann gilt für die Summe aller möglichen Routen:
+			\[\sum_{v,i} d'(\sigma_i^{(v)}) = 2m\sum_{v'\in V'}d'(s,v') + n'\cdot d(\tau)\]
+		Denn jeder Knoten ist genau einmal Anfangs- und einmal Endpunkt für jede der $m$ Teilstrecken (erster Summand) und jede Route entsteht durch Weglassen von Kanten aus der Tour $\tau$ (zweiter Summand).
 		
 		Die beste dieser Routen ist sicher mindestens so gut wie der Durchschnitt aus allen möglichen Routen, also:
-			\[\sum_{i} d'(\sigma_i) = 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + (1-\frac{m}{n'})d(\tau) \leq 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + (1-\frac{m}{n'})\rho\cdot\OPT_\TSP\]
+			\[\sum_{i} d'(\sigma_i) = 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + d(\tau) \leq 2\frac{\frac{n'}{Q}+1}{n'}\sum_{v'\in V'}d'(s,v')+ d(\tau) \leq  2\cdot\frac{2}{Q}\sum_{v'\in V'}d'(s,v') + \rho\cdot\OPT_\TSP\]
 		Zusammen mit \Cref{CVRPLowerBound} ergibt dies:
-			\[\sum_{i} d'(\sigma_i) \leq \frac{mQ}{n'}\OPT_\CVRP + (1-\frac{m}{n'})\rho\cdot\OPT_\CVRP \leq \left(1+\frac{Q}{n'}+\rho\right)\cdot\OPT_\CVRP\]
+			\[\sum_{i} d'(\sigma_i) \leq 2\cdot\OPT_\CVRP + \rho\cdot\OPT_\CVRP \leq \left(2+\rho\right)\cdot\OPT_\CVRP\]
 	\end{proof}
 	
 	\section{Algorithmus für \HetTSP}
@@ -258,6 +258,10 @@
 	\begin{satz}[Theorem 1.1 in \cite{HetCVRP}]
 		\Cref{AlgHetTSP} ist ein $\Oc(1)$-approximativer Algorithmus für \HetTSP.
 	\end{satz}
+	
+	\begin{proof}
+		Folgende Kapitel...
+	\end{proof}
 	
 	\subsection{Level-Prime}
 	
@@ -289,18 +293,22 @@
 	\end{kor}
 	
 	
-	\subsection{Decomposition-Algorithmus}
+	\subsection{Zerlegungsalgorithmus}
 	
 	\begin{algorithm}[H]
 		\caption{Decomposition}\label{AlgDecomposition}
 		\begin{algorithmic}[1]
 			\Procedure{Decomposition}{$\left(\Hc\right)$}
-			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_i := \text{Zerl. von } \Hc\cap E_i \text{ in Bäume mit genau einer Kante nach } V_i$
-			\State 
-			\State
-			\State
-			\State
-			\State \Return $\left(\Tc_i\right)_{i\geq 0}$
+			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l := \text{Zerl. von } \Hc\cap E_l \text{ in Bäume mit genau einer Kante nach } V_l$
+			\State $\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^< := \Sc_l \backslash \Sc_l^{\geq}$
+			\LineFor{$\tau \in \Sc_l^{<}$}{$h(\tau) := \tau' \in S_{l-1}^{\geq}$ mit $\tau \cup \tau'$ zsh. (ex. eind.)}
+			\For{$\tau \in \Sc_l^{\geq}$}
+				\State $\Tc_l(\tau) \gets$ Partition von $\tau \cup h^{-1}(\tau)$ in Bäume der Länge $\left[2^{l+1}M, 2^{l+2}M\right]$ 
+				\Statex \hspace{6.5em} (und evtl. ein kürzerer)
+				\State $\Tc'_l(\tau) \gets \left\{T_r \cup \{\text{kürzeste Kante zu } s\} \mid T_r \in \Tc_l(\tau)\right\}$
+			\EndFor
+			\State $\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)$
+			\State \Return $\left(\Tc_l\right)_{l\geq 0}$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
@@ -327,9 +335,9 @@
 		\caption{FractionalAssignment}\label{AlgFractionalAssignment}
 		\begin{algorithmic}[1]
 			\Procedure{FractionalAssignment}{$\left(\Tc\right)$}
-			\State $L := \{T \in \Tc\},\quad b(T) := d(T)$, \quad $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta 2^{\lambda_i}$
+			\State $L := \{T \in \Tc\},\quad b(T) := d(T)$, \quad $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta M 2^{\lambda_i}$
 			\State $F := \{\{T,i\} \mid T \in \Tc_l, \lambda_i \geq l-1\}$ 
-			\State Bestimme rationales, $L$-überdeckendes $b$-Matching $x_{Ti}$.
+			\State Bestimme $L$-überdeckendes $b$-Matching $x_{Ti}$.
 			\State \Return $\left(x_{Ti}\right)$
 			\EndProcedure
 		\end{algorithmic}
@@ -342,21 +350,34 @@
 	\begin{algorithm}
 		\caption{RoundingAssignment}\label{AlgRoundingAssignment}
 		\begin{algorithmic}[1]
-			\Procedure{RoundingAssignment}{$\left(x_{ij}\right)$}
-			\State 
+			\Procedure{RoundingAssignment}{$\left(x_{Ti}\right)$}
+			\State $\left(x'_{Ti}\right) \gets$ \textsc{RoundScheduling}($p_{Ti} := \frac{d(T)}{2^{\lambda_i}}, \tilde{x}_{Ti} := \frac{x_{Ti}}{d(T)}$)
+			\State $\tau_i \gets$ Tour durch die Bäume $T$ mit $x'_{Ti} = 1$.
 			\State \Return $\left(\tau_i\right)$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
 	
 	\begin{prop}[Theorem 1 in \cite{Rounding}]
+		Gegeben folgendes Scheduling-Problem: Job $T$ benötigt auf Maschine $i$ Zeit $p_{Ti}$. $J_i(t) := \{T \mid p_{Ti} \leq t\}$ und $M_T(t) := \{i \mid p_{Ti} \leq t\}$.
 		
+		Eine rationale Lösung $\tilde{x}_{Ti}$ mit
+			\[\sum_{i\in M_T(t)} \tilde{x}_{Ti} = 1, \quad \sum_{T\in J_i(t)} p_{Ti}\tilde{x}_{Ti} \leq \beta M, \quad \tilde{x}_{Ti} \geq 0 \]		
+		kann in polynomieller Zeit zu einer ganzen Lösung $x'_{Ti}$ gerundet werden mit:
+			\[\sum_{i\in M_T(t)} x'_{Ti} = 1, \quad \sum_{T\in J_i(t)} p_{Ti} x'_{Ti} \leq \beta M + t, \quad x'_{Ti} \in \{0,1\} \]
 	\end{prop}
 	
 	\begin{lemma}[Lemma 3.2 in \cite{HetCVRP}]
 		Gegeben einen $(\alpha, \beta)$-zuweisbaren Wald, liefern \cref{AlgFractionalAssignment} und \cref{AlgRoundingAssignment} eine $(4\alpha+2\beta)$-approximative Lösung für \HetTSP.
 	\end{lemma}
 	
+	\begin{proof}
+		$\tilde{x}_{Ti}$ erfüllt:
+			\[\sum_{i\in M_T(2\alpha M)} \tilde{x}_{Ti} = 1, \quad \sum_{T\in J_i(2\alpha M)} p_{Ti}\tilde{x}_{Ti} \leq \beta M, \quad \tilde{x}_{Ti} \geq 0 \]
+		Somit gibt \Cref{AlgRoundingAssignment} eine Zuweisung mit 	
+			\[\sum_{T\in J_i(t)} p_{Ti}\tilde{x}_{Ti} \leq \beta M + 2\alpha M\]
+		Durch Verdoppeln der Kanten in den Bäumen, erhalten wir daraus Touren mit $d(\tau_i) \leq 2\cdot \left(\beta M + 2\alpha M\right)$.
+	\end{proof}
 	
 	\section{Algorithmus für \HetCVRP}
 	
