@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>Vortrags-Titel</title>
+    <title>Heterogenes k-CVRP</title>
     
     <meta name="description" content="" />
     <meta name="author" content="Lukas Graf" />
@@ -13,12 +13,39 @@
     
     <link rel="shortcut icon" href="favicon.png" />
 	
-	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--	<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
 	<!-- Falls kein Internet verfügbar... -->
-	<script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+	<script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML-full">MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90, linebreaks: { automatic: true } }})
+	</script>
 </head>
 
 <body class="impress-not-supported">
+
+<!-- \NEWCOMMANDS: -->
+<div style="display:none;">\(
+	\newcommand{\ZZ}{\mathbb{Z}}
+	\newcommand{\QQ}{\mathbb{Q}}
+	\newcommand{\RR}{\mathbb{R}}
+	\newcommand{\CC}{\mathbb{C}}
+	\newcommand{\NN}{\mathbb{N}}
+	\newcommand{\PP}{\mathbb{P}}
+	\newcommand{\Ic}{\mathcal{I}}
+	\newcommand{\Jc}{\mathcal{J}}
+	\newcommand{\Hc}{\mathcal{H}}
+	\newcommand{\Tc}{\mathcal{T}}
+	\newcommand{\Sc}{\mathcal{S}}
+	\newcommand{\Oc}{\mathcal{O}}
+
+	\newcommand{\OPT}{\mathrm{OPT}}
+	\newcommand{\MST}{\mathrm{MST}}
+
+	\newcommand{\TSP}{\textbf{TSP}}
+	\newcommand{\HomTSP}{\textbf{HomTSP}}
+	\newcommand{\HetTSP}{\textbf{HetTSP}}
+	\newcommand{\CVRP}{\textbf{CVRP}}
+	\newcommand{\HetCVRP}{\textbf{HetCVRP}}
+\)</div>
 
 <div class="fallback-message">
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
@@ -36,39 +63,163 @@
 <div style="position:absolute; right:0px; width:100%; height:100%; overflow:hidden;" class="impress-container">
 <div id="impress">
 
-	<div id="TitlePage" class="step" data-x="-950" data-y="180" data-scale=".5">
-		<div style="width:1350px; height:200px; background:linear-gradient(to right, #3333B2, #000000); position:absolute; left:-60px; top:-100px; box-shadow: 10px 10px 8px #868686;" class="TeXFake"></div>
-		<div class="problem TeXFakeShadow" style="margin:150px auto 50px auto; width:60%; ">
-			<h1>Heterogenes k-CVRP</h1>
+	<div id="TitlePage" class="step" data-x="-920" data-y="135" data-scale=".5">
+		<div style="width:1400px; height:200px; background:linear-gradient(to right, #3333B2, #000000); position:absolute; left:-100px; top:-100px; box-shadow: 10px 10px 8px #868686;" class="TeXFake"></div>
+		<div class="problem TeXFakeShadow" style="margin:150px auto 50px auto; width:500px; ">
+			<h1>Heterogenes \(k\)-CVRP</h1>
 		</div>
 		
-		<div style="text-align:center; font-size:70%;" class="TeXFake">
-			basierend auf dem gleichnamigen Paper (2010) von <br /> Inge Li Gørtz, Marco Molinaro, Viswanath Nagarajan und R. Ravi 
+		<div style="text-align:center; font-size:90%;" class="TeXFake">
+			basierend auf dem Paper &bdquo;Capacitated Vehicle Routing with Non-Uniform Speeds&ldquo; (2010)<br /> von Inge Li Gørtz, Marco Molinaro, Viswanath Nagarajan und R. Ravi 
 		</div>
 		
-		<div style="width:1350px; height:50px; position:absolute; left:-60px; bottom:-20px; display:table; table-layout: fixed;" class="TeXFake">
+		<div style="width:1400px; height:50px; position:absolute; left:-100px; bottom:-20px; display:table; table-layout: fixed;" class="TeXFake">
 		<div style="width:33%; background-color:#000000; color:#FFFFFF; text-align:right; font-size:55%; padding:10px 30px; font-weight:bold; display:table-cell;">Lukas Graf</div>
 		<div style="background-color:#3333B2; color:#FFFFFF; text-align:left; font-size:55%; padding:10px 30px; font-weight:bold; display:table-cell;">Seminar: Spieltheorie und Approximationsalgorithmen</div>
 		</div>
 	</div>
 	
 	<div id="Problems" class="step" data-x="-1300" data-y="0">
-		<h2>Problem-Definitionen</h2>
-		<div class="problem substep" style="transform:scale(.5); width:50%; margin:auto;">
-			<h1>(Metrisches) TSP</h1>
+		
+	<!-- #################### Metrisches TSP ############################# -->
+		<div class="substep" style="position:absolute; left:100px; top:10px; width:300px;  height:100px;">
+			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>Metrisches TSP</h1></div>
 		</div>
-		<div class="substep" style="margin:auto; font-size:70%; width:40%;">
-			<ul>
-				<li>Orte \(V, |V| < \infty\)</li>
-				<li>Metrik \(d: V\times V \to \mathbb{R}_{\geq 0}\)</li>
-			</ul>
+				
+		<div class="substep problemdef e" style="left:0px; top:60px;">
+			Vollst. Graph \(G=(V,E)\) mit <br />metr. Abstandsfkt. \(d: E \to \mathbb{R}_{\geq 0}\)
+		</div>
+		<img src="Bilder/TSP1.svg" class="substep" style="position:absolute; left:450px; top:250px; width:250px;"/>
+
+		<div class="substep problemdef" style="left:0px; top:130px;">
+			und Startpunkt/Depot \(s \in V\)
+		</div>
+		<img src="Bilder/TSP2.svg" class="substep" style="position:absolute; left:450px; top:250px; width:250px;"/>	
+
+		<div class="substep problemdef l" style="left:0px; top:170px;">
+			Tour \(\tau\) durch ganz \(V\)
+		</div>
+		<img src="Bilder/TSP3.svg" class="substep" style="position:absolute; left:450px; top:250px; width:250px;"/>	
+		
+		<div class="substep problemdef z" style="left:0px; top:210px;">
+			Minimiere \(d(\tau)\)
+		</div>
+
+		<div class="substep theoremstyle s" style="left:0px; top:250px;">
+			\(\exists \rho\)-approx. Alg. (z.B. Christofides)
 		</div>
 		
-		<img src="Bilder/TSP1.svg" class="substep" style="position:absolute; left:500px; top:400px; width:200px;"/>
-		<img src="Bilder/TSP2.svg" class="substep" style="position:absolute; left:500px; top:400px; width:200px;"/>	
-		<img src="Bilder/TSP3.svg" class="substep" style="position:absolute; left:500px; top:400px; width:200px;"/>	
+
+	<!-- #################### Metrisches CVRP ############################# -->
+		<div class="substep" style="position:absolute; right:40px; top:10px; width:300px;  height:100px;">
+			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>(Metrisches) CVRP</h1></div>
+		</div>
+
+		<div class="substep problemdef e" style="right:0px; top:60px;">
+			TSP + Kapazität \(Q \in \mathbb{N}_0\) (pol. groß) <br />
+			Bedarf \(q_v \in \{0, \dots, Q\}\) zu \(v \in V\)
+		</div>
+		
+		<div class="substep problemdef l" style="right:0px; top:140px;">
+			Route \(\sigma\), die alle Bedarfe erfüllt und max. \(Q\) Einheiten auf einmal transp.
+		</div>
+				
+		<div class="substep problemdef z" style="right:0px; top:210px;">
+			Minimiere \(d(\sigma)\)
+		</div>
+
+		<div class="substep theoremstyle s" style="right:0px; top:250px;">
+			\(\exists (\rho+2)\)-approx. Algorithmus
+		</div>
+		
+
+	<!-- #################### Heterogenes k-TSP ############################# -->
+		<div class="substep" style="position:absolute; left:100px; top:400px; width:300px;  height:100px;">
+			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>Heterogenes \(k\)-TSP</h1></div>
+		</div>
+
+		<div class="substep problemdef e" style="left:0px; top:460px;">
+			TSP + \(k\) Fahrzeuge mit <br /> Geschw. \(2^{\lambda_i}\) <span class="substep">(o.B.d.A. \(\lambda_i \in \mathbb{N}_0\))</span>
+		</div>
+		
+		<div class="substep problemdef l" style="left:0px; top:530px;">
+			Touren \((\tau_i)\), bei \(s\) beginnend, die zusammen ganz \(V\) abdecken
+		</div>
+				
+		<div class="substep problemdef z" style="left:0px; top:600px;">
+			Minimiere \(\max d(\tau_i)/2^{\lambda_i}\)
+		</div>
+
+		<div class="substep theoremstyle g" style="left:0px; top:640px;">
+			\(\exists \mathcal{O}(1)\)-approx. Algorithmus
+		</div>
+
+	<!-- #################### Heterogenes k-CVRP ############################# -->
+		<div class="substep problemdef e" style="right:0px; top:460px;">
+			CVRP + HetTSP
+		</div>
+		
+		<div class="substep problemdef l" style="right:0px; top:500px;">
+			Routen \(\sigma_i\), die gemeinsam alle Bedarfe erfüllt und jeweisl max. \(Q\) Einheiten auf einmal transportiert
+		</div>
+				
+		<div class="substep problemdef z" style="right:0px; top:600px;">
+			Minimiere \(\max d(\sigma_i)/2^{\lambda_i}\)
+		</div>
+
+		<div class="substep theoremstyle g" style="right:0px; top:640px;">
+			\(\exists \mathcal{O}(1)\)-approx. Algorithmus
+		</div>
+		
+		<div class="substep" style="position:absolute; top:195px; left:420px;">
+			<img src="Bilder/Pfeil.svg" width="370" style="position:absolute; top:55px; left:0px;" />
+			<div style="position:absolute; top:0px; left:70px; width:190px; height:40px; font-weight:bold; text-align:center; padding:30px 15px;">
+				Tour-Splitting
+			</div>
+		</div>
+		
+		<div class="substep theoremstyletop l" style="position:absolute; top:120px; left:440px; width:360px;">
+			\(\OPT_\CVRP \geq \frac{2}{Q}\sum_{v\in V} q_v \cdot d(s,v)\)
+		</div>
+		
+		<div class="substep" style="position:absolute; left:420px; top:440px;">
+			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center;">
+				Blackbox
+			</div>		
+			<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
+		</div>
+	</div>
+	
+	<div class="step" data-x="-1330" data-y="190" data-scale=".3" style="border:2px #abcdef solid; color:#FFFFFF;">
+		<div class="substep" style="position:absolute; right:100px; bottom:100px; width:25%; text-align:right;">
+			Instanz \(\Ic\) von \(\HetCVRP\)
+		</div>
+		
+		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
+		
+		<div class="substep" style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
+			Instanz \(\Jc\) von \(\HetTSP\) mit<br />
+			\(\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\)
+		</div>
+		
+		
+		<div class="substep" style="position:absolute; left:100px; top:150px; width:20%; text-align:left;">
+			\((\tau_i)\) Lsg. von \(\HetTSP\)
+		</div>
+		
+		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
+		
+		<div class="substep" style="position:absolute; right:100px; top:150px; width:50%; text-align:right;">
+			\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
+			\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
+		</div>
+		
 		
 	</div>
+	
+<!-- ########################################################################################################################
+     ###############   FOLIE 2    ###########################################################################################
+	 #################################################################################################################### -->
 
 	<div id="Algorithm-Overview" class="step" data-x="0" data-y="0">
 		<h2>Algorithmus für HetTSP</h2>
@@ -105,6 +256,7 @@
 			<li>Quelle 2</li>
 		</ul>
 	</div>
+	
 </div>
 
 </div>

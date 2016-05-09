@@ -145,9 +145,8 @@ a:focus {
 */
 
 .step {
-	border:2px #000000 solid;
     position: relative;
-    width: 1200px;
+    width: 1250px;
 	height: 700px;
     padding: 20px;
     margin: 20px auto;
@@ -274,6 +273,54 @@ h3 {text-align:center; font-size:125%;}
 .past .TeXFakeShadow {box-shadow: none;}
 
 
+.problemdef::before {
+	text-decoration:underline;
+	display:block;
+	color:#808080;
+	float:left;
+	margin-left:-3em;
+}
+.problemdef {
+	margin-left:3em;
+}
+
+.problemdef.e::before {content:"Eing.:";}
+.problemdef.z::before {content:"Lsg.:";}
+.problemdef.l::before {content:"Ziel.:";}
+
+.theoremstyle {
+	margin-left:3em;
+}
+
+.theoremstyle::before {
+	font-variant:small-caps;
+	font-weight:bold;
+	color:#808080;
+	display:block;
+	float:left;
+	margin-left:-3em;
+}
+
+.theoremstyle.s::before {content:"Satz:";}
+.theoremstyle.g::before {content:"Ges.:";}
+.theoremstyle.l::before {content:"Lem.:";}
+
+.theoremstyletop::before {
+	font-variant:small-caps;
+	font-weight:bold;
+	color:#808080;
+	display:block;
+}
+
+.theoremstyletop.s::before {content:"Satz:";}
+.theoremstyletop.l::before {content:"Lemma:";}
+
+
+#Problems .problemdef, #Problems .theoremstyle, #Problems .theoremstyletop {font-size:80%; width:30%; position:absolute;}
+
+
+span.substep {transition:opacity 0s !important;}
+
 
 #sidebar {opacity:0;}
 .sidebar-visible {transition: opacity 1s; opacity:1 !important; width:100%; height:100%; background-color:#FFFFFF;}
@@ -287,8 +334,8 @@ h3 {text-align:center; font-size:125%;}
     background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));*/}
 
-.credits {transition: opacity 5s;}	
-.impress-on-overview .credits {opacity: 1;}
+/*.impress-on-overview #credits {transition-delay:10s; -moz-transition-delay:10s; transition: opacity 3s;}	
+.impress-on-overview #credits {opacity: 1;}*/
 	
 .impress-on-overview .impress-container {width:100% !important;}
 .impress-on-overview .impress-container {transition: width 2s;}
@@ -296,3 +343,19 @@ h3 {text-align:center; font-size:125%;}
 .impress-on-overview .sidebar-container .sidebar-visible {opacity:0;}
 .impress-on-overview .sidebar-container .sidebar-visible {transition: opacity .5s;}
 .impress-on-overview .sidebar-container {transition: width 2s;}
+
+
+
+/* Erstellen: */
+.step {
+	border:2px #000000 solid;
+	opacity: 1 !important;
+	background-image:url(Grid.png);
+}
+
+.substep {
+	opacity: 1 !important;
+}
+
+.TeXFake {opacity:0;}
+.TeXFakeShadow  {box-shadow:none;}
