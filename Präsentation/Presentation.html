@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
@@ -156,7 +156,7 @@
 
 	<!-- #################### Heterogenes k-CVRP ############################# -->
 		<div class="substep problemdef e" style="right:0px; top:460px;">
-			CVRP + HetTSP
+			CVRP \(\cup\) HetTSP
 		</div>
 		
 		<div class="substep problemdef l" style="right:0px; top:500px;">
@@ -183,38 +183,52 @@
 		</div>
 		
 		<div class="substep" style="position:absolute; left:420px; top:440px;">
-			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center;">
+			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px;">
 				Blackbox
 			</div>		
 			<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
 		</div>
 	</div>
+
 	
-	<div class="step" data-x="-1330" data-y="190" data-scale=".3" style="border:2px #abcdef solid; color:#FFFFFF;">
+<!-- ########################################################################################################################
+     ###############   Blackbox    ###########################################################################################
+	 #################################################################################################################### -->
+	
+	<div id="Blackbox" class="step" data-x="-1330" data-y="190" data-scale=".3" style="border:2px #abcdef solid; color:#FFFFFF;">
 		<div class="substep" style="position:absolute; right:100px; bottom:100px; width:25%; text-align:right;">
 			Instanz \(\Ic\) von \(\HetCVRP\)
 		</div>
 		
 		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
+		<div class="substep" style="position:absolute; right:440px; bottom:200px; text-align:center;">
+			BILD<br /><br />Reduktion
+		</div>
 		
 		<div class="substep" style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
 			Instanz \(\Jc\) von \(\HetTSP\) mit<br />
 			\(\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\)
 		</div>
 		
+		<img src="Bilder/PfeilWeißUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
+		<div class="substep" style="position:absolute; left:200px; top:300px;">
+			\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &rarr;)
+		</div>
 		
 		<div class="substep" style="position:absolute; left:100px; top:150px; width:20%; text-align:left;">
 			\((\tau_i)\) Lsg. von \(\HetTSP\)
 		</div>
 		
 		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
+		<img src="Bilder/PfeilUp.svg" height="580" style="position:absolute; left:500px; top:-550px;" />
+		<div class="substep" style="position:absolute; left:440px; top:200px; text-align:center;" />
+			Tour-Splitting<br />(fahrzeugweise)
+		</div>
 		
 		<div class="substep" style="position:absolute; right:100px; top:150px; width:50%; text-align:right;">
 			\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
 			\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
 		</div>
-		
-		
 	</div>
 	
 <!-- ########################################################################################################################

@@ -268,7 +268,7 @@ h3 {text-align:center; font-size:125%;}
 .past .TeXFake { opacity: 0;}
 
 
-.problem {border-radius: 25px; background:#3333B2; color:#FFFFFF; padding:20px;}
+.problem {border-radius: 25px; background:darkgreen; color:#FFFFFF; padding:20px;}
 .TeXFakeShadow {box-shadow: 10px 10px 8px #868686; transition:box-shadow 1s;}
 .past .TeXFakeShadow {box-shadow: none;}
 
