@@ -319,6 +319,17 @@ h3 {text-align:center; font-size:125%;}
 #Problems .problemdef, #Problems .theoremstyle, #Problems .theoremstyletop {font-size:80%; width:30%; position:absolute;}
 
 
+.code {
+	font-family:monospace,Courier;
+}
+.AlgName {
+	font-variant:small-caps;
+}
+.numbering {
+	color:#808080;
+}
+
+
 span.substep {transition:opacity 0s !important;}
 
 

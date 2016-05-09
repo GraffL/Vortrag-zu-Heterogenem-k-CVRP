@@ -162,7 +162,7 @@
 		</div>
 		
 		<div class="substep problemdef l" style="right:0px; top:500px;">
-			Routen \(\sigma_i\), die gemeinsam alle Bedarfe erfüllt und jeweisl max. \(Q\) Einheiten auf einmal transportiert
+			Routen \(\sigma_i\), die gemeinsam alle Bedarfe erfüllt und jeweils max. \(Q\) Einheiten auf einmal transportiert
 		</div>
 				
 		<div class="substep problemdef z" style="right:0px; top:600px;">
@@ -193,6 +193,60 @@
 	</div>
 
 	
+<!-- ########################################################################################################################
+     ###############   FOLIE 2    ###########################################################################################
+	 #################################################################################################################### -->
+
+	<div id="Algorithm-Overview" class="step" data-x="0" data-y="0">
+		<h2 style="margin-top:-30px;">Algorithmus für HetTSP</h2>
+	
+		<div class="substep code" style="position:absolute; left:0px; top:60px;"><span class="numbering">(1)</span>&nbsp;Rate \(M\) mit \(\frac{M}{2}\leq \OPT \leq M\)</div>
+		
+		<div class="substep code" style="position:absolute; left:0px; top:100px;"><span class="numbering">(2)</span>&nbsp;<span class="AlgName">LevelPrim</span>(\(G=(V,E)\))</div>
+		
+		<div class="substep code" style="position:absolute; left:0px; top:220px;"><span class="numbering">(3)</span>&nbsp;<span class="AlgName">Decomposition</span>()</div>
+		
+		<div class="substep code" style="position:absolute; left:0px; top:400px;"><span class="numbering">(4)</span>&nbsp;<span class="AlgName">Assignment</span>()</div>		
+	</div>
+	
+	<div id="Level-Prime-Close" class="step" data-x="-320" data-y="-120" data-scale=".5">
+		<div class="substep code" style="position:absolute; left:40px; top:170px; width:1000px;"><span class="numbering">(a)</span>&nbsp;
+			\(V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace, V_l := \left\lbrace v \in V \mid 2^{l-1}M \lt d(s,v) \leq 2^l M\right\rbrace\)
+		</div>
+		
+		<div class="substep code" style="position:absolute; left:40px; top:220px;"><span class="numbering">(b)</span>&nbsp;
+			<strong>for</strong> \(l\geq 0\) <strong>do</strong> \(H_l \gets\) Minimaler Spannbaum auf \(G\left[V_{\leq l}\right]/V_{\lt l}\)
+		</div>
+		
+		<div class="substep code" style="position:absolute; left:40px; top:270px;"><span class="numbering">(c)</span>&nbsp;
+			<strong>return</strong> \(\left(H_l\right)_{l\geq 0}\)
+		</div>
+	</div>
+	
+	<div id="Level-Prime-Close2" class="step" data-x="200" data-y="-120" data-scale=".5">
+		<div class="theoremstyle l" style="position:absolute; left:400px; top:100px; font-size:150%;">(Hl) erfüllt:
+			<ul>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div id="Algorithm-Overview2" class="step" data-x="0" data-y="0">
+				
+	</div>
+
+	<div id="Zerlegung-Close" class="step" data-x="-230" data-y="200" data-scale=".45">
+		<br /><br />
+		<span class="substep">Details zur Zerlegung...</span>
+	</div>
+	
+	<div id="Algorithm-Overview3" class="step" data-x="0" data-y="0">
+				
+	</div>
+
+
 <!-- ########################################################################################################################
      ###############   Blackbox    ###########################################################################################
 	 #################################################################################################################### -->
@@ -232,38 +286,12 @@
 			\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
 			\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
 		</div>
-	</div>
+	</div>		
+		
 	
 <!-- ########################################################################################################################
-     ###############   FOLIE 2    ###########################################################################################
+     ###############   The End    ###########################################################################################
 	 #################################################################################################################### -->
-
-	<div id="Algorithm-Overview" class="step" data-x="0" data-y="0">
-		<h2>Algorithmus für HetTSP</h2>
-	
-		<div class="substep" style="position:absolute; left:20px; top:100px;">Level Prim</div>
-		
-		
-		<div class="substep" style="position:absolute; left:20px; top:400px;">Zerlegung</div>
-	</div>
-	
-	<div id="Level-Prime-Close" class="step" data-x="-230" data-y="-100" data-scale=".45">
-		<br /><br />
-		<span class="substep">Details zu Level Prime...</span>
-	</div>
-
-	<div id="Algorithm-Overview2" class="step" data-x="0" data-y="0">
-				
-	</div>
-
-	<div id="Zerlegung-Close" class="step" data-x="-230" data-y="200" data-scale=".45">
-		<br /><br />
-		<span class="substep">Details zur Zerlegung...</span>
-	</div>
-	
-	<div id="Algorithm-Overview3" class="step" data-x="0" data-y="0">
-				
-	</div>
 	
     <div id="overview" class="step" data-x="-700" data-y="300" data-scale="2" data-rotate-x="-20"></div>
 	
