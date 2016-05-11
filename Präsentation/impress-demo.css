@@ -88,25 +88,10 @@ i, em { font-style: italic }
     ... and give links a nice look.
 */
 a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0 0.1em;
-    background: rgba(255,255,255,0.5);
-    text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
-    border-radius: 0.2em;
-
-    -webkit-transition: 0.5s;
-    -moz-transition:    0.5s;
-    -ms-transition:     0.5s;
-    -o-transition:      0.5s;
-    transition:         0.5s;
+    color: darkblue;
+    text-decoration: underline;
 }
 
-a:hover,
-a:focus {
-    background: rgba(255,255,255,1);
-    text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
-}
 
 /*
     Because the main point behind the impress.js demo is to demo impress.js
@@ -263,6 +248,8 @@ h1 {text-align:center; font-size:150%;}
 h2 {text-align:center; font-size:150%;}
 h3 {text-align:center; font-size:125%;}
 
+ul {margin-left:1em;}
+
 
 .TeXFake {transition: opacity .5s;}
 .past .TeXFake { opacity: 0;}
@@ -304,6 +291,7 @@ h3 {text-align:center; font-size:125%;}
 .theoremstyle.s::before {content:"Satz:";}
 .theoremstyle.g::before {content:"Ges.:";}
 .theoremstyle.l::before {content:"Lem.:";}
+.theoremstyle.d::before {content:"Def.:";}
 
 .theoremstyletop::before {
 	font-variant:small-caps;
@@ -331,6 +319,8 @@ h3 {text-align:center; font-size:125%;}
 
 
 span.substep {transition:opacity 0s !important;}
+
+span.vanish.past {display:none;}
 
 
 #sidebar {opacity:0;}

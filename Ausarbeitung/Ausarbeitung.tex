@@ -220,7 +220,7 @@
 			\[\OPT_\CVRP = \sum_i d\left(\sigma_i^\ast\right) \geq \frac{2}{Q}\sum_i\sum_{v'\in S_i}d(s,v') \geq \frac{2}{Q}\sum_{v'\in V'}d(s,v')\]
 	\end{proof}
 	
-	\begin{lemma}[Lemma 2 in \cite{CVRPApprox}\footnote{Wie über eine genauere Abschätzung in \cite{TourSpliting} gezeigt wird, erreicht der Algorithmus sogar eine Approximationsgüte von $\rho + \lceil\frac{n'}{Q}\rceil \frac{Q-\rho}{n'}$, wobei $n' := \sum_v q_v$}]\label{AlgCVRPProof}
+	\begin{lemma}[Lemma 2 in \cite{CVRPApprox}\footnote{Wie über eine genauere Abschätzung in \cite{CVRPApprox} gezeigt wird, erreicht der Algorithmus sogar eine Approximationsgüte von $\rho + \lceil\frac{n'}{Q}\rceil \frac{Q-\rho}{n'}$, wobei $n' := \sum_v q_v$}]\label{AlgCVRPProof}
 		Unter Verwendung eines $\rho$-approximativen Algorithmus für \TSP{} ist \textsc{CVRP-Approx} $(\rho+2)$-approximativ.
 	\end{lemma}	
 	
@@ -280,7 +280,7 @@
 		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
 		\begin{itemize}
 			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
-			\item $\forall k\geq 0: \sum_{l\geq k} d(H_l) \leq 8\cdot \MST(G/V_{<k})$
+			\item $\forall j\geq 0: \sum_{l\geq j} d(H_l) \leq 8\cdot \MST(G/V_{<j})$
 		\end{itemize}
 	\end{lemma}
 	
@@ -288,7 +288,7 @@
 		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
 		\begin{itemize}
 			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
-			\item $\forall k\geq 1: \sum_{l>k} d(H_l) \leq 8\cdot \sum_{l\geq k}2^l\mu_l$
+			\item $\forall j\geq 1: \sum_{l>j} d(H_l) \leq 8M\cdot \sum_{l\geq j}2^l\mu_l$
 		\end{itemize}
 	\end{kor}
 	
