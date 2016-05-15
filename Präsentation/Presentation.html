@@ -212,20 +212,24 @@
 			\(\left(\Tc_l\right)_{l\geq 0} \gets\) <span class="AlgName">Decomposition</span>(\(\left(H_l\right)_{l\geq 0} \)):
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:0px; top:430px;"><span class="numbering">(4)</span>
+		<div class="substep code" style="position:absolute; left:0px; top:470px;"><span class="numbering">(4)</span>
 			\(\left(\tau_i\right)_{i=1}^k \gets\) <span class="AlgName">Assignment</span>(\( \left(\Tc_l\right)_{l\geq 0} \)):
 		</div>		
 		
-		<div class="substep code" style="position:absolute; left:0px; top:470px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(a)</span>
+		<div class="substep code" style="position:absolute; left:0px; top:510px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(a)</span>
 			\(\left(x_{Ti}\right) \gets\) <span class="AlgName">FractionalAssignment</span>(\( \left(\Tc_l\right) \))
 		</div>		
 		
-		<div class="substep code" style="position:absolute; left:50%; top:470px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(b)</span>
+		<div class="substep code" style="position:absolute; left:50%; top:510px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(b)</span>
 			\(\left(\tau_i\right) \gets\) <span class="AlgName">RoundingAssignment</span>(\( \left(x_{Ti}\right) \))
 		</div>		
 	</div>
+
+	<!-- #################### Level-Prime ############################# -->
 	
 	<div id="Level-Prime-Close" class="step" data-x="-320" data-y="-120" data-scale=".5">
+		<img src="Bilder/LevelPrime.svg" width="500" style="position:absolute; left:1000px; top:-20px;" />
+	
 		<div class="substep code" style="position:absolute; left:40px; top:170px; width:1000px;"><span class="numbering">(a)</span>&nbsp;
 			\(V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace, V_l := \left\lbrace v \in V \mid 2^{l-1}M \lt d(s,v) \leq 2^l M\right\rbrace\)
 		</div>
@@ -253,26 +257,33 @@
 				
 	</div>
 
+	<!-- #################### Decomposition ############################# -->
+	
 	<div id="Zerlegung-Close" class="step" data-x="-320" data-y="50" data-scale=".5">
+		<img src="Bilder/Decomposition.svg" width="500" style="position:absolute; left:1000px; top:50px;" />
+		
 		<div class="substep code" style="position:absolute; left:40px; top:70px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
-			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap E_l\) in Bäume mit genau einer Kante nach \(V_l\)
+			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap E_l\) in Bäume <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			mit genau einer Kante nach \(V_{\lt l}\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:120px;"><span class="numbering">(b)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:160px;"><span class="numbering">(b)</span>&nbsp;
 			\(\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^\lt := \Sc_l \backslash \Sc_l^{\geq}\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:170px;"><span class="numbering">(c)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:210px;"><span class="numbering">(c)</span>&nbsp;
 			<strong>for</strong> \(\tau \in \Sc_l^\lt\) <strong>do</strong> \(h(\tau) := \tau' \in S_{l-1}^{\geq}\) mit \(\tau \cup \tau'\) zsh. (ex. eind.)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:220px;"><span class="numbering">(d)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:260px;"><span class="numbering">(d)</span>&nbsp;
 			<strong>for</strong> \(\tau \in \Sc_l^{\geq}\) <strong>do</strong><br />
-			<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\) (+ein kürzerer)<br />
+			<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\)<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(und evtl. ein kürzerer)<br />
 			<span class="numbering">(f)</span>&nbsp;&nbsp;&nbsp; \(\Tc'_l(\tau) \gets \left\{T_r \cup \{\right.\)kürzeste Kante zu \(\left.s\} \mid T_r \in \Tc_l(\tau)\right\}\)
 		</div>
 
-		<div class="substep code" style="position:absolute; left:40px; top:350px;"><span class="numbering">(g)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:430px;"><span class="numbering">(g)</span>&nbsp;
 			<strong>return</strong> \(\left(\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)\right)_{l\geq 0}\)
 		</div>
 	</div>
@@ -297,16 +308,21 @@
 	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="0" data-y="0">
 				
 	</div>
-		
-	<div id="Zuweisung-Close" class="step" data-x="-320" data-y="260" data-scale=".5">
-		<br /><br /><br />
-		<span class="substep">Details zur Zuweisung...</span>
+
+	<!-- #################### FractionalAssignment ############################# -->
+	
+	<div id="Zuweisung-Close" class="step" data-x="-320" data-y="300" data-scale=".5">
+		<img src="Bilder/FractionalAssignment.svg" width="750" style="position:absolute; right:30px; top:150px;" />
 	</div>
 
-	<div id="Zuweisung-Close2" class="step" data-x="300" data-y="260" data-scale=".5">
+	<!-- #################### RoundingAssignment ############################# -->
+
+	<div id="Zuweisung-Close2" class="step" data-x="300" data-y="300" data-scale=".5">
 		<div class="substep theoremstyle l" style="position:absolute; left:100px; top:10px; font-size:130%;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (6, 40) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
 		</div>
+		
+		<img src="Bilder/RoundingAssignment.svg" width="600" style="position:absolute; left:100px; top:250px;" />
 	</div>	
 	
 	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="0" data-y="0">
@@ -322,10 +338,12 @@
 			Instanz \(\Ic\) von \(\HetCVRP\)
 		</div>
 		
-		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
-		<div class="substep" style="position:absolute; right:400px; bottom:200px; text-align:center;">
-			<img src="Bilder/Reduktion.svg" width="300" /><br />
-			Reduktion
+		<div class="substep">
+			<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
+			<div style="position:absolute; right:400px; bottom:200px; text-align:center;">
+				<img src="Bilder/Reduktion.svg" width="300" /><br />
+				Reduktion
+			</div>
 		</div>
 		
 		<div class="substep" style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
