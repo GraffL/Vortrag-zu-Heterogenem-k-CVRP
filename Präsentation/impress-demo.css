@@ -196,13 +196,13 @@ a {
     There is no content in it, so we make sure it's not visible because we want
     to be able to click on other steps.
 */
- #overview { display: none } 
+ #Overview { display: none } 
 
 /*
     We also make other steps visible and give them a pointer cursor using the
     `impress-on-` class.
 */
-.impress-on-overview .step {
+.impress-on-Overview .step {
     opacity: 1;
     cursor: pointer;
 }
@@ -302,7 +302,7 @@ ul {margin-left:1em;}
 
 .theoremstyletop.s::before {content:"Satz:";}
 .theoremstyletop.l::before {content:"Lemma:";}
-
+.theoremstyletop.d::before {content:"Definition:";}
 
 #Problems .problemdef, #Problems .theoremstyle, #Problems .theoremstyletop {font-size:80%; width:30%; position:absolute;}
 
@@ -338,16 +338,16 @@ span.vanish.past {display:none;}
 /*.impress-on-overview #credits {transition-delay:10s; -moz-transition-delay:10s; transition: opacity 3s;}	
 .impress-on-overview #credits {opacity: 1;}*/
 	
-.impress-on-overview .impress-container {width:100% !important;}
-.impress-on-overview .impress-container {transition: width 2s;}
-.impress-on-overview .sidebar-container {width:0% !important;}
-.impress-on-overview .sidebar-container .sidebar-visible {opacity:0;}
-.impress-on-overview .sidebar-container .sidebar-visible {transition: opacity .5s;}
-.impress-on-overview .sidebar-container {transition: width 2s;}
+.impress-on-Overview .impress-container {width:100% !important;}
+.impress-on-Overview .impress-container {transition: width 2s;}
+.impress-on-Overview .sidebar-container {width:0% !important;}
+.impress-on-Overview .sidebar-container .sidebar-visible {opacity:0;}
+.impress-on-Overview .sidebar-container .sidebar-visible {transition: opacity .5s;}
+.impress-on-Overview .sidebar-container {transition: width 2s;}
 
 
 
-/* Erstellen: */
+/* Erstellen: 
 .step {
 	border:2px #000000 solid;
 	opacity: 1 !important;

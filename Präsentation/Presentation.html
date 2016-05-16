@@ -263,7 +263,7 @@
 		<img src="Bilder/Decomposition.svg" width="500" style="position:absolute; left:1000px; top:50px;" />
 		
 		<div class="substep code" style="position:absolute; left:40px; top:70px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
-			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap E_l\) in Bäume <br />
+			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap (V_l\times V_{\leq l})\) in Bäume <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			mit genau einer Kante nach \(V_{\lt l}\)
 		</div>
@@ -312,17 +312,58 @@
 	<!-- #################### FractionalAssignment ############################# -->
 	
 	<div id="Zuweisung-Close" class="step" data-x="-320" data-y="300" data-scale=".5">
-		<img src="Bilder/FractionalAssignment.svg" width="750" style="position:absolute; right:30px; top:150px;" />
+		<img src="Bilder/FractionalAssignment.svg" width="850" style="position:absolute; right:0px; top:150px;" />
+		
+		<div class="theoremstyletop d" style="position:absolute; left:0px; top:550px; width:600px;">
+			\((x_{Ti})\) ist \(L\)-sättigendes \(b\)-Matching,  falls<br />
+			\(\quad\sum_i x_{Ti} = b(T),\quad \sum_T x_{Ti} \leq b(i),\quad x_{Ti}\in\NN\)
+		</div>
+		
+		<div class="theoremstyletop s" style="position:absolute; right:0px; top:550px; width:600px;">
+			\(L\)-sättigendes \(b\)-Matching existiert genau dann,
+			wenn für alle \(K\subseteq L: b(K) \leq b(N(K))\)
+		</div>
+		
+		<div class="theoremstyletop l" style="position:absolute; left:20px; top:150px; width:350px; font-size:130%;">
+			\((L\cup R, F, b)\) besitzt ein \(L\)-sättigendes <span style="white-space: nowrap;">\(b\)-Matching</span> \((x_{Ti})\).<br />
+			Es kann in Pol.-Zeit gefunden werden (z.B. mit Max-Flow).
+		</div>
 	</div>
 
 	<!-- #################### RoundingAssignment ############################# -->
 
 	<div id="Zuweisung-Close2" class="step" data-x="300" data-y="300" data-scale=".5">
 		<div class="substep theoremstyle l" style="position:absolute; left:100px; top:10px; font-size:130%;">
-			\( (\Tc_i)_{i\geq 0}\) ist \( (6, 40) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
+			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
 		</div>
 		
-		<img src="Bilder/RoundingAssignment.svg" width="600" style="position:absolute; left:100px; top:250px;" />
+		<img src="Bilder/RoundingAssignment.svg" width="650" style="position:absolute; left:190px; top:170px;" />
+		
+		<div style="position:absolute; left:750px; top:170px; width:400px; color:#800080;">
+			\(i\) zugewiesener Anteil von \(T\)
+		</div>
+		<div style="position:absolute; left:750px; top:220px; width:400px;">
+			Zeit, die \(i\) für \(T\) benötigt
+		</div>
+
+		<div class="theoremstyle s" style="position:absolute; left:20px; top:450px; width:1100px;">
+			Folgende Rundung von \((\tilde{x}_{Ti})\) zu \((x'_{Ti})\) ist in Pol.-Zeit möglich:
+			<div style="position:absolute; top:40px; left:20px; width:500px;">
+				\(\sum_{i\in M_T} \tilde{x}_{Ti} = 1, \quad \quad \tilde{x}_{Ti} \geq 0,\)<br />
+				\(\sum_{T\in J_i} p_{Ti}\tilde{x}_{Ti} \leq \beta M\)
+			</div>	
+			
+			<img src="Bilder/PfeilShort.svg" width="80" style="position:absolute; top:70px; left:440px;" />
+
+			<div style="position:absolute; top:40px; right:20px; width:500px;">
+				\(\sum_{i\in M_T} x'_{Ti} = 1, \quad \quad \quad x'_{Ti} \in \{0,1\}\)<br />
+				\(\sum_{T\in J_i} p_{Ti} x'_{Ti} \leq \beta M + 2\alpha\)
+			</div>
+
+			<div style="position:absolute; top:140px; left:0px;">
+			 wobei \(J_i := \{T \mid p_{Ti} \leq 2\alpha\}\) und \(M_T := \{i \mid p_{Ti} \leq 2\alpha\}\)
+			</div>
+		</div>		
 	</div>	
 	
 	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="0" data-y="0">
@@ -382,15 +423,15 @@
      ###############   The End    ###########################################################################################
 	 #################################################################################################################### -->
 	
-    <div id="overview" class="step" data-x="-700" data-y="300" data-scale="2" data-rotate-x="-20"></div>
+    <div id="Overview" class="step" data-x="-700" data-y="300" data-scale="2" data-rotate-x="-20"></div>
 	
 	<div id="Credits" class="step" data-x="-700" data-y="1200" data-scale="1.9" data-rotate-x="-20">
 		<div style="padding-left:50px;"><h4>Quellen:</h4>
 		<ul style="padding-left:40px; font-size:70%;">
-			<li><strong><a href="http://arxiv.org/abs/1012.1850">Capacitated Vehicle Routing with Non-Uniform Speeds</a> (2010) - I. L. Gørtz, M. Molinaro, V. Nagarajan, R. Ravi</strong></li>
-			<li><a href="http://www.jstor.org/stable/3689422">Bounds and Heuristics for Capacitated Routing Problems</a> (1985) - M. Haimovich, A. H. G. Rinnooy Kan</li>
-			<li><a href="https://books.google.de/books?id=tarLTNwM3gEC">Combinatorial Optimization</a> (2011) - W.J. Cook, W. H. Cunningham, W. R. Pulleyblank, A. Schrijver</li>
-			<li><a href="http://dx.doi.org/10.1007/BF01585745">Approximation algorithms for scheduling unrelated parallel machines</a> (1990) - J. K. Lenstra, D. B. Shmoys, É. Tardos</li>
+			<li><strong><a href="http://arxiv.org/abs/1012.1850">Capacitated Vehicle Routing with Non-Uniform Speeds</a> (2010) - I.L. Gørtz, M. Molinaro, V. Nagarajan, R. Ravi</strong></li>
+			<li><a href="http://www.jstor.org/stable/3689422">Bounds and Heuristics for Capacitated Routing Problems</a> (1985) - M. Haimovich, A.H.G. Rinnooy Kan</li>
+			<li><a href="https://books.google.de/books?id=tarLTNwM3gEC">Combinatorial Optimization</a> (2011) - W.J. Cook, W.H. Cunningham, W.R. Pulleyblank, A. Schrijver</li>
+			<li><a href="http://dx.doi.org/10.1007/BF01585745">Approximation algorithms for scheduling unrelated parallel machines</a> (1990) - J.K. Lenstra, D.B. Shmoys, É. Tardos</li>
 		</ul></div>
 	</div>
 	
