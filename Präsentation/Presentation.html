@@ -62,10 +62,10 @@
 
 <div style="position:absolute; right:0px; width:100%; height:100%; overflow:hidden;" class="impress-container">
 <div id="impress">
-	<div id="LoadScreen" class="step" data-x="-920" data-y="135" data-scale=".5">
+	<div id="LoadScreen" class="step" data-x="480" data-y="135" data-scale=".5">
 	</div>
 	
-	<div id="TitlePage" class="step" data-x="-920" data-y="135" data-scale=".5">
+	<div id="TitlePage" class="step" data-x="480" data-y="135" data-scale=".5">
 		<div style="width:1400px; height:200px; background:linear-gradient(to right, darkgreen, #000000); position:absolute; left:-100px; top:-100px; box-shadow: 10px 10px 8px #868686;" class="TeXFake"></div>
 		<div class="problem TeXFakeShadow" style="margin:150px auto 50px auto; width:500px; ">
 			<h1>Heterogenes \(k\)-CVRP</h1>
@@ -81,7 +81,7 @@
 		</div>
 	</div>
 	
-	<div id="Problems" class="step" data-x="-1300" data-y="0">
+	<div id="Problems" class="step" data-x="100" data-y="0">
 		
 	<!-- #################### Metrisches TSP ############################# -->
 		<div class="substep" style="position:absolute; left:100px; top:10px; width:300px;  height:100px;">
@@ -185,7 +185,7 @@
 		</div>
 		
 		<div class="substep" style="position:absolute; left:420px; top:440px;">
-			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px;">
+			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px; box-shadow: 2px 2px 2px #868686;">
 				Blackbox
 			</div>		
 			<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
@@ -197,38 +197,40 @@
      ###############   FOLIE 2    ###########################################################################################
 	 #################################################################################################################### -->
 
-	<div id="Algorithm-Overview" class="step" data-x="0" data-y="0">
-		<h2 style="margin-top:-30px;">Algorithmus für HetTSP</h2>
+	<div id="Algorithm-Overview" class="step" data-x="-1300" data-y="-100">
+		<img src="Bilder/Bracket.svg" height="800" style="position:absolute; right:-100px; top:50px;" />
+		
+		<div class="problem" style="transform:scale(.7); margin:-30px auto; width:40%;"><h2>Algorithmus für HetTSP</h2></div>
 	
-		<div class="substep code" style="position:absolute; left:0px; top:60px;"><span class="numbering">(1)</span>
+		<div class="substep code maincode" style="position:absolute; left:-10px; top:110px;"><span class="numbering">(1)</span>
 			Rate \(M\) mit \(\frac{M}{2}\leq \OPT \leq M\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:0px; top:100px;"><span class="numbering">(2)</span>
+		<div class="substep code maincode" style="position:absolute; left:-10px; top:150px;"><span class="numbering">(2)</span>
 			\(\left(H_l\right)_{l\geq 0} \gets\) <span class="AlgName">LevelPrim</span>(\(G, d, M\)):
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:0px; top:220px;"><span class="numbering">(3)</span>
+		<div class="substep code maincode" style="position:absolute; left:-10px; top:260px;"><span class="numbering">(3)</span>
 			\(\left(\Tc_l\right)_{l\geq 0} \gets\) <span class="AlgName">Decomposition</span>(\(\left(H_l\right)_{l\geq 0} \)):
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:0px; top:470px;"><span class="numbering">(4)</span>
+		<div class="substep code maincode" style="position:absolute; left:-10px; top:520px;"><span class="numbering">(4)</span>
 			\(\left(\tau_i\right)_{i=1}^k \gets\) <span class="AlgName">Assignment</span>(\( \left(\Tc_l\right)_{l\geq 0} \)):
 		</div>		
 		
-		<div class="substep code" style="position:absolute; left:0px; top:510px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(a)</span>
+		<div class="substep code maincode" style="position:absolute; left:-10px; top:560px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(a)</span>
 			\(\left(x_{Ti}\right) \gets\) <span class="AlgName">FractionalAssignment</span>(\( \left(\Tc_l\right) \))
 		</div>		
 		
-		<div class="substep code" style="position:absolute; left:50%; top:510px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(b)</span>
+		<div class="substep code maincode" style="position:absolute; left:50%; top:560px; font-size:85%; text-align:center; width:50%;"><span class="numbering">(b)</span>
 			\(\left(\tau_i\right) \gets\) <span class="AlgName">RoundingAssignment</span>(\( \left(x_{Ti}\right) \))
 		</div>		
 	</div>
 
 	<!-- #################### Level-Prime ############################# -->
 	
-	<div id="Level-Prime-Close" class="step" data-x="-320" data-y="-120" data-scale=".5">
-		<img src="Bilder/LevelPrime.svg" width="500" style="position:absolute; left:1000px; top:-20px;" />
+	<div id="Level-Prime-Close" class="step" data-x="-1620" data-y="-170" data-scale=".5">
+		<img src="Bilder/LevelPrime.svg" width="500" style="position:absolute; left:1000px; top:30px;" />
 	
 		<div class="substep code" style="position:absolute; left:40px; top:170px; width:1000px;"><span class="numbering">(a)</span>&nbsp;
 			\(V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace, V_l := \left\lbrace v \in V \mid 2^{l-1}M \lt d(s,v) \leq 2^l M\right\rbrace\)
@@ -243,7 +245,7 @@
 		</div>
 	</div>
 	
-	<div id="Level-Prime-Close2" class="step" data-x="300" data-y="-120" data-scale=".5">
+	<div id="Level-Prime-Close2" class="step" data-x="-1000" data-y="-170" data-scale=".5">
 		<div class="theoremstyle l" style="position:absolute; left:300px; top:100px; font-size:130%;">\(\left(H_l\right)_{l\geq 0}\) erfüllt <span class="substep">(falls \(M\) korrekt geraten)</span>:
 			<ul>
 				<li>Knoten-Level entlang Wurzel-Blatt-Pfaden sind monoton wachsend.</li>
@@ -253,47 +255,47 @@
 	</div>
 
 
-	<div id="Algorithm-Overview2" style="display:none;" class="step" data-x="0" data-y="0">
+	<div id="Algorithm-Overview2" style="display:none;" class="step" data-x="-1300" data-y="0">
 				
 	</div>
 
 	<!-- #################### Decomposition ############################# -->
 	
-	<div id="Zerlegung-Close" class="step" data-x="-320" data-y="50" data-scale=".5">
-		<img src="Bilder/Decomposition.svg" width="500" style="position:absolute; left:1000px; top:50px;" />
+	<div id="Zerlegung-Close" class="step" data-x="-1620" data-y="-20" data-scale=".5">
+		<img src="Bilder/Decomposition.svg" width="500" style="position:absolute; left:1000px; top:140px;" />
 		
-		<div class="substep code" style="position:absolute; left:40px; top:70px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:100px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
 			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap (V_l\times V_{\leq l})\) in Bäume <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			mit genau einer Kante nach \(V_{\lt l}\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:160px;"><span class="numbering">(b)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:190px;"><span class="numbering">(b)</span>&nbsp;
 			\(\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^\lt := \Sc_l \backslash \Sc_l^{\geq}\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:210px;"><span class="numbering">(c)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:240px;"><span class="numbering">(c)</span>&nbsp;
 			<strong>for</strong> \(\tau \in \Sc_l^\lt\) <strong>do</strong> \(h(\tau) := \tau' \in S_{l-1}^{\geq}\) mit \(\tau \cup \tau'\) zsh. (ex. eind.)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:260px;"><span class="numbering">(d)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:290px;"><span class="numbering">(d)</span>&nbsp;
 			<strong>for</strong> \(\tau \in \Sc_l^{\geq}\) <strong>do</strong><br />
 			<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\)<br />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(und evtl. ein kürzerer)<br />
 			<span class="numbering">(f)</span>&nbsp;&nbsp;&nbsp; \(\Tc'_l(\tau) \gets \left\{T_r \cup \{\right.\)kürzeste Kante zu \(\left.s\} \mid T_r \in \Tc_l(\tau)\right\}\)
 		</div>
 
-		<div class="substep code" style="position:absolute; left:40px; top:430px;"><span class="numbering">(g)</span>&nbsp;
+		<div class="substep code" style="position:absolute; left:40px; top:460px;"><span class="numbering">(g)</span>&nbsp;
 			<strong>return</strong> \(\left(\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)\right)_{l\geq 0}\)
 		</div>
 	</div>
 
-	<div id="Zerlegung-Close2" class="step" data-x="300" data-y="50" data-scale=".5">
-		<div class="substep theoremstyle l" style="position:absolute; left:300px; top:20px; font-size:130%;">
+	<div id="Zerlegung-Close2" class="step" data-x="-1000" data-y="-20" data-scale=".5">
+		<div class="substep theoremstyle l" style="position:absolute; left:300px; top:70px; font-size:130%;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (6, 40) \)-zuweisbar.
 		</div>
 		
-		<div class="substep theoremstyle d" style="position:absolute; left:300px; top:90px; font-size:130%; width:800px;">
+		<div class="substep theoremstyle d" style="position:absolute; left:300px; top:140px; font-size:130%; width:800px;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar, falls gilt:
 			<ul>
 				<li>Für alle \(T \in \Tc_l\) gilt: \(d(T) \leq \alpha 2^l M\) <!--<br />
@@ -305,13 +307,13 @@
 	</div>
 
 	
-	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="0" data-y="0">
+	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="-1300" data-y="0">
 				
 	</div>
 
 	<!-- #################### FractionalAssignment ############################# -->
 	
-	<div id="Zuweisung-Close" class="step" data-x="-320" data-y="300" data-scale=".5">
+	<div id="Zuweisung-Close" class="step" data-x="-1620" data-y="250" data-scale=".5">
 		<img src="Bilder/FractionalAssignment.svg" width="850" style="position:absolute; right:0px; top:150px;" />
 		
 		<div class="theoremstyletop d" style="position:absolute; left:0px; top:550px; width:600px;">
@@ -332,7 +334,7 @@
 
 	<!-- #################### RoundingAssignment ############################# -->
 
-	<div id="Zuweisung-Close2" class="step" data-x="300" data-y="300" data-scale=".5">
+	<div id="Zuweisung-Close2" class="step" data-x="-1000" data-y="250" data-scale=".5">
 		<div class="substep theoremstyle l" style="position:absolute; left:100px; top:10px; font-size:130%;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
 		</div>
@@ -366,15 +368,19 @@
 		</div>		
 	</div>	
 	
-	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="0" data-y="0">
+	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="-1300" data-y="0">
 				
 	</div>
 
 <!-- ########################################################################################################################
      ###############   Blackbox    ###########################################################################################
 	 #################################################################################################################### -->
+
+	<div id="Problems-Overview" class="step" style="display:none;" data-x="100" data-y="0">
 	
-	<div id="Blackbox" class="step" data-x="-1330" data-y="190" data-scale=".3" style="color:#FFFFFF;">
+	</div>
+	 
+	<div id="Blackbox" class="step" data-x="70" data-y="190" data-scale=".3" style="color:#FFFFFF;">
 		<div class="substep" style="position:absolute; right:100px; bottom:100px; width:25%; text-align:right;">
 			Instanz \(\Ic\) von \(\HetCVRP\)
 		</div>
@@ -394,7 +400,7 @@
 		
 		<img src="Bilder/PfeilWeißUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
 		<div class="substep" style="position:absolute; left:200px; top:300px;">
-			\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &rarr;)
+			\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &larr;)
 		</div>
 		
 		<div class="substep" style="position:absolute; left:100px; top:150px; width:20%; text-align:left;">
@@ -414,7 +420,7 @@
 	</div>
 
 
-	<div id="Problems-Overview" class="step" style="display:none;" data-x="-1300" data-y="0">
+	<div id="Problems-Overview2" class="step" style="display:none;" data-x="100" data-y="0">
 	
 	</div>
 		
@@ -423,9 +429,9 @@
      ###############   The End    ###########################################################################################
 	 #################################################################################################################### -->
 	
-    <div id="Overview" class="step" data-x="-700" data-y="300" data-scale="2" data-rotate-x="-20"></div>
+    <div id="Overview" class="step" data-x="-650" data-y="300" data-scale="2.1" data-rotate-x="-20"></div>
 	
-	<div id="Credits" class="step" data-x="-700" data-y="1200" data-scale="1.9" data-rotate-x="-20">
+	<div id="Credits" class="step" data-x="-650" data-y="1200" data-scale="1.9" data-rotate-x="-20">
 		<div style="padding-left:50px;"><h4>Quellen:</h4>
 		<ul style="padding-left:40px; font-size:70%;">
 			<li><strong><a href="http://arxiv.org/abs/1012.1850">Capacitated Vehicle Routing with Non-Uniform Speeds</a> (2010) - I.L. Gørtz, M. Molinaro, V. Nagarajan, R. Ravi</strong></li>

@@ -255,15 +255,16 @@ ul {margin-left:1em;}
 .past .TeXFake { opacity: 0;}
 
 
-.problem {border-radius: 25px; background:darkgreen; color:#FFFFFF; padding:20px;}
+.problem {border-radius: 25px; background:darkgreen; color:#FFFFFF; padding:20px; box-shadow: 5px 5px 4px #868686;}
 .TeXFakeShadow {box-shadow: 10px 10px 8px #868686; transition:box-shadow 1s;}
-.past .TeXFakeShadow {box-shadow: none;}
+.past .TeXFakeShadow {box-shadow: 5px 5px 4px #868686 !important;}
 
 
 .problemdef::before {
 	text-decoration:underline;
 	display:block;
 	color:#808080;
+	text-shadow: 1px 1px 4px rgba(170,170,170,0.9);
 	float:left;
 	margin-left:-3em;
 }
@@ -283,6 +284,7 @@ ul {margin-left:1em;}
 	font-variant:small-caps;
 	font-weight:bold;
 	color:#808080;
+	text-shadow: 1px 1px 4px rgba(170,170,170,0.9);
 	display:block;
 	float:left;
 	margin-left:-3em;
@@ -297,6 +299,7 @@ ul {margin-left:1em;}
 	font-variant:small-caps;
 	font-weight:bold;
 	color:#808080;
+	text-shadow: 1px 1px 4px rgba(170,170,170,0.9);
 	display:block;
 }
 
@@ -310,13 +313,15 @@ ul {margin-left:1em;}
 .code {
 	font-family:monospace,Courier;
 }
+.maincode {
+	 text-shadow: 1px 1px 2px rgba(100,100,100,0.9);
+}
 .AlgName {
 	font-variant:small-caps;
 }
 .numbering {
 	color:#808080;
 }
-
 
 span.substep {transition:opacity 0s !important;}
 
@@ -347,11 +352,11 @@ span.vanish.past {display:none;}
 
 
 
-/* Erstellen: 
+/* Erstellen: */
 .step {
-	border:2px #000000 solid;
+	/*border:2px #000000 solid;*/
 	opacity: 1 !important;
-	background-image:url(Grid.png);
+	/*background-image:url(Grid.png);*/
 }
 
 .substep {
