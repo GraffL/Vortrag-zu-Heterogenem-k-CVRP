@@ -359,7 +359,7 @@ span.vanish.past {display:none;}
 	/*background-image:url(Grid.png);*/
 }
 
-.substep {
+div.substep {
 	opacity: 1 !important;
 }
 
