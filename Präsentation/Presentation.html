@@ -62,10 +62,10 @@
 
 <div style="position:absolute; right:0px; width:100%; height:100%; overflow:hidden;" class="impress-container">
 <div id="impress">
-	<div id="LoadScreen" class="step" data-x="480" data-y="135" data-scale=".5">
+	<div id="LoadScreen" class="step" data-x="510" data-y="135" data-scale=".5">
 	</div>
 	
-	<div id="TitlePage" class="step" data-x="480" data-y="135" data-scale=".5">
+	<div id="TitlePage" class="step" data-x="510" data-y="135" data-scale=".5">
 		<div style="width:1400px; height:200px; background:linear-gradient(to right, darkgreen, #000000); position:absolute; left:-100px; top:-100px; box-shadow: 10px 10px 8px #868686;" class="TeXFake"></div>
 		<div class="problem TeXFakeShadow" style="margin:150px auto 50px auto; width:500px; ">
 			<h1>Heterogenes \(k\)-CVRP</h1>
@@ -82,125 +82,157 @@
 	</div>
 	
 	<div id="Problems" class="step" data-x="100" data-y="0">
-		<img src="Bilder/TSP0.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/TSP1.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/TSP2.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/CVRP0.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
-		<img src="Bilder/CVRP1.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/CVRP2.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/CVRP3.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/HetTSP0.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
-		<img src="Bilder/HetTSP1.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/HetTSP2.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/HetCVRP0.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
-		<img src="Bilder/HetCVRP1.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/HetCVRP2.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		<img src="Bilder/SkizzenVerdeckung.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px;"/>
-		
 	<!-- #################### Metrisches TSP ############################# -->
 		<div class="substep" style="position:absolute; left:100px; top:10px; width:300px;  height:100px;">
 			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>Metrisches TSP</h1></div>
 		</div>
-				
-		<div class="substep problemdef e" style="left:0px; top:60px;">
-			Vollst. Graph \(G=(V,E)\) mit <br />metr. Abstandsfkt. \(d: E \to \mathbb{R}_{\geq 0}\)
+		
+		<div class="substep">
+			<img src="Bilder/TSP0.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>		
+			<div class="problemdef e" style="left:0px; top:60px;">
+				Vollst. Graph \(G=(V,E)\) mit <br />metr. Abstandsfkt. \(d: E \to \mathbb{R}_{\geq 0}\)
+			</div>
+		</div>
+		
+		<div class="substep">
+			<img src="Bilder/TSP1.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef" style="left:0px; top:130px;">
+				und Startpunkt/Depot \(s \in V\)
+			</div>
 		</div>
 
-		<div class="substep problemdef" style="left:0px; top:130px;">
-			und Startpunkt/Depot \(s \in V\)
-		</div>
-
-		<div class="substep problemdef l" style="left:0px; top:170px;">
-			Tour \(\tau\) durch ganz \(V\)
+		<div class="substep">
+			<img src="Bilder/TSP2.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef l" style="left:0px; top:170px;">
+				<span class="highlightcolor" style="color:blue;">Tour \(\tau\)</span> durch ganz \(V\)
+			</div>
 		</div>
 		
 		<div class="substep problemdef z" style="left:0px; top:210px;">
 			Minimiere \(d(\tau)\)
 		</div>
 
-		<div class="substep theoremstyle s" style="left:0px; top:250px;">
-			\(\exists \rho\)-approx. Alg. (z.B. Christofides)
-		</div>
-		
-
 	<!-- #################### Metrisches CVRP ############################# -->
-		<div class="substep" style="position:absolute; right:40px; top:10px; width:300px;  height:100px;">
-			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>(Metrisches) CVRP</h1></div>
+		<div class="substep">
+			<img src="Bilder/CVRP0.svg" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
+			<div style="position:absolute; right:40px; top:10px; width:300px;  height:100px;">
+				<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>(Metrisches) CVRP</h1></div>
+			</div>
 		</div>
 
-		<div class="substep problemdef e" style="right:0px; top:60px;">
-			TSP + Kapazität \(Q \in \mathbb{N}_0\) (pol. groß) <br />
-			Bedarf \(q_v \in \{0, \dots, Q\}\) zu \(v \in V\)
+		<div class="substep">
+			<img src="Bilder/CVRP1.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef e" style="right:0px; top:60px;">
+				TSP + Kapazität \(Q \in \mathbb{N}_0\) (pol. groß)
+			</div>
 		</div>
+
+		<div class="substep">
+			<img src="Bilder/CVRP2.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef" style="right:0px; top:95px;">
+				Bedarf \(q_v \in \{0, \dots, Q\}\) zu \(v \in V\)
+			</div>
+		</div>		
 		
-		<div class="substep problemdef l" style="right:0px; top:140px;">
-			Route \(\sigma\), die alle Bedarfe erfüllt und max. \(Q\) Einheiten auf einmal transp.
+		<div class="substep">
+			<img src="Bilder/CVRP3.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef l" style="right:0px; top:140px;">
+				<span class="highlightcolor" style="color:blue;">Route \(\sigma\)</span>, die alle Bedarfe erfüllt und max. \(Q\) Einheiten auf einmal transp.
+			</div>
 		</div>
 				
 		<div class="substep problemdef z" style="right:0px; top:210px;">
 			Minimiere \(d(\sigma)\)
 		</div>
 
-		<div class="substep theoremstyle s" style="right:0px; top:250px;">
-			\(\exists (\rho+2)\)-approx. Algorithmus
-		</div>
-		
-
 	<!-- #################### Heterogenes k-TSP ############################# -->
-		<div class="substep" style="position:absolute; left:100px; top:400px; width:300px;  height:100px;">
-			<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>Heterogenes \(k\)-TSP</h1></div>
+		<div class="substep">
+			<img src="Bilder/HetTSP0.svg" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
+			<div style="position:absolute; left:100px; top:400px; width:300px;  height:100px;">
+				<div class="problem" style="transform:scale(.5); margin:-10% -50%; width:500px;"><h1>Heterogenes \(k\)-TSP</h1></div>
+			</div>
 		</div>
 
-		<div class="substep problemdef e" style="left:0px; top:460px;">
-			TSP + \(k\) Fahrzeuge mit <br /> Geschw. \(2^{\lambda_i}\) &nbsp;&nbsp;&nbsp;&nbsp;<span class="substep vanish">(oBdA \(\lambda_i \in \mathbb{N}_0\))</span><span class="substep">\(\mu_l := \left\{i\mid \lambda_i = l\right\}\)</span>
+		<div class="substep">
+			<img src="Bilder/HetTSP1.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef e" style="left:0px; top:460px;">
+				TSP + \(k\) Fahrzeuge mit <br /> Geschw. \(2^{\lambda_i}\) &nbsp;&nbsp;&nbsp;&nbsp;<span class="substep vanish">(oBdA \(\lambda_i \in \mathbb{N}_0\))</span><span class="substep">\(\mu_l := \left\{i\mid \lambda_i = l\right\}\)</span>
+			</div>
 		</div>
 		
-		<div class="substep problemdef l" style="left:0px; top:530px;">
-			Touren \((\tau_i)\), bei \(s\) beginnend, die zusammen ganz \(V\) abdecken
+		<div class="substep">
+			<img src="Bilder/HetTSP2.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef l" style="left:0px; top:530px;">
+				<span class="highlightcolor" style="color:#800080;">Touren \((\tau_i)\)</span>, bei \(s\) beginnend, die zusammen ganz \(V\) abdecken
+			</div>
 		</div>
 				
 		<div class="substep problemdef z" style="left:0px; top:600px;">
 			Minimiere \(\max d(\tau_i)/2^{\lambda_i}\)
 		</div>
 
-		<div class="substep theoremstyle g" style="left:0px; top:640px;">
-			\(\exists \mathcal{O}(1)\)-approx. Algorithmus
-		</div>
-
 	<!-- #################### Heterogenes k-CVRP ############################# -->
-		<div class="substep problemdef e" style="right:0px; top:460px;">
-			CVRP \(\cup\) HetTSP
+		<img src="Bilder/HetCVRP0.svg" class="substep" style="position:absolute; left:425px; top:150px; width:350px; background-color:white;"/>
+	
+		<div class="substep">
+			<img src="Bilder/HetCVRP1.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef e" style="right:0px; top:460px;">
+				HetTSP \(\cup\) CVRP
+			</div>
 		</div>
 		
-		<div class="substep problemdef l" style="right:0px; top:500px;">
-			Routen \(\sigma_i\), die gemeinsam alle Bedarfe erfüllt und jeweils max. \(Q\) Einheiten auf einmal transportiert
+		<div class="substep">
+			<img src="Bilder/HetCVRP2.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="problemdef l" style="right:0px; top:500px;">
+				<span class="highlightcolor" style="color:#800080;">Routen \(\sigma_i\)</span>, die gemeinsam alle Bedarfe erfüllt und jeweils max. \(Q\) Einheiten auf einmal transportiert
+			</div>
 		</div>
 				
 		<div class="substep problemdef z" style="right:0px; top:600px;">
 			Minimiere \(\max d(\sigma_i)/2^{\lambda_i}\)
 		</div>
 
-		<div class="substep theoremstyle g" style="right:0px; top:640px;">
-			\(\exists \mathcal{O}(1)\)-approx. Algorithmus
+		
+	<!-- ##################### Algorithmen ########################## -->
+		<div class="substep">
+			<img src="Bilder/SkizzenVerdeckung.svg" style="position:absolute; left:425px; top:150px; width:350px;"/>
+			<div class="theoremstyle s" style="left:0px; top:250px;">
+				\(\exists \rho\)-approx. Alg. (z.B. Christofides)
+			</div>
 		</div>
 		
-<!--		<div class="substep" style="position:absolute; top:195px; left:420px;">
-			<img src="Bilder/Pfeil.svg" width="370" style="position:absolute; top:55px; left:0px;" />
-			<div style="position:absolute; top:0px; left:70px; width:190px; height:40px; font-weight:bold; text-align:center; padding:30px 15px;">
+		<div class="substep" style="position:absolute; top:195px; left:420px;">
+			<img src="Bilder/Pfeil.svg" width="370" style="position:absolute; top:60px; left:0px;" />
+			<div style="position:absolute; top:5px; left:70px; width:190px; height:40px; font-weight:bold; text-align:center; padding:30px 15px;">
 				Tour-Splitting
 			</div>
 		</div>
 		
 		<div class="substep theoremstyletop l" style="position:absolute; top:120px; left:440px; width:360px;">
 			\(\OPT_\CVRP \geq \frac{2}{Q}\sum_{v\in V} q_v \cdot d(s,v)\)
+		</div>	
+		
+		<div class="substep theoremstyle s" style="right:0px; top:250px;">
+			\(\exists (\rho+2)\)-approx. Algorithmus
+		</div>
+	
+	
+		<div class="substep theoremstyle g" style="left:0px; top:640px;">
+			\(\exists \mathcal{O}(1)\)-approx. Algorithmus
 		</div>
 		
-		<div class="substep" style="position:absolute; left:420px; top:440px;">
-			<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px; box-shadow: 2px 2px 2px #868686;">
-				Blackbox
-			</div>		
-			<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
-		</div>-->
+		<div class="substep">
+			<div style="position:absolute; left:420px; top:440px;">
+				<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px; box-shadow: 2px 2px 2px #868686;">
+					Blackbox
+				</div>		
+				<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
+			</div>
+			<div class="theoremstyle g" style="right:0px; top:640px;">
+				\(\exists \mathcal{O}(1)\)-approx. Algorithmus
+			</div>
+		</div>
+		
 	</div>
 
 	
@@ -241,25 +273,30 @@
 	<!-- #################### Level-Prime ############################# -->
 	
 	<div id="Level-Prime-Close" class="step" data-x="-1620" data-y="-170" data-scale=".5">
-		<img src="Bilder/LevelPrime0.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime1.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime2.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime6.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
-		<img src="Bilder/LevelPrime.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px; background-color:white;" />
-	
-		<div class="substep code" style="position:absolute; left:40px; top:170px; width:1000px;"><span class="numbering">(a)</span>&nbsp;
-			\(V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace, V_l := \left\lbrace v \in V \mid 2^{l-1}M \lt d(s,v) \leq 2^l M\right\rbrace\)
+		<img src="Bilder/LevelPrime0.svg" width="500" style="position:absolute; left:1000px; top:30px;" />
+		
+		<div class="substep">
+			<img src="Bilder/LevelPrime1.svg" width="500" style="position:absolute; left:1000px; top:30px;" />
+			<div class="code" style="position:absolute; left:40px; top:170px; width:1000px;"><span class="numbering">(a)</span>&nbsp;
+				\(V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace, V_l := \left\lbrace v \in V \mid 2^{l-1}M \lt d(s,v) \leq 2^l M\right\rbrace\)
+			</div>
 		</div>
 		
 		<div class="substep code" style="position:absolute; left:40px; top:220px;"><span class="numbering">(b)</span>&nbsp;
 			<strong>for</strong> \(l\geq 0\) <strong>do</strong> \(H_l \gets\) Minimaler Spannbaum auf \(G\left[V_{\leq l}\right]/V_{\lt l}\)
 		</div>
 		
-		<div class="substep code" style="position:absolute; left:40px; top:270px;"><span class="numbering">(c)</span>&nbsp;
-			<strong>return</strong> \(\left(H_l\right)_{l\geq 0}\)
+		<img src="Bilder/LevelPrime2.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
+		<img src="Bilder/LevelPrime3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
+		<img src="Bilder/LevelPrime4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
+		<img src="Bilder/LevelPrime5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
+		<img src="Bilder/LevelPrime6.svg" class="substep" width="500" style="position:absolute; left:1000px; top:30px;" />
+		
+		<div class="substep">
+			<img src="Bilder/LevelPrime.svg" width="500" style="position:absolute; left:1000px; top:30px; background-color:white;" />
+			<div class="code" style="position:absolute; left:40px; top:270px;"><span class="numbering">(c)</span>&nbsp;
+				<strong>return</strong> \(\left(H_l\right)_{l\geq 0}\)
+			</div>
 		</div>
 	</div>
 	
@@ -279,46 +316,49 @@
 
 	<!-- #################### Decomposition ############################# -->
 	
-	<div id="Zerlegung-Close" class="step" data-x="-1620" data-y="-20" data-scale=".5">
-		<img src="Bilder/Decomposition0.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px;" />
-		<img src="Bilder/Decomposition1.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px;" />
-		<img src="Bilder/Decomposition2.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px;" />
-		<img src="Bilder/Decomposition3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px; background-color:white;" />
-		<img src="Bilder/Decomposition4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px; background-color:white;" />
-		<img src="Bilder/Decomposition5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:140px;" />
+	<div id="Zerlegung-Close" class="step" data-x="-1620" data-y="-35" data-scale=".5">
 		
-		<div class="substep code" style="position:absolute; left:40px; top:100px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
-			\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap (V_l\times V_{\leq l})\) in Bäume <br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			mit genau einer Kante nach \(V_{\lt l}\)
-		</div>
-		
-		<div class="substep code" style="position:absolute; left:40px; top:190px;"><span class="numbering">(b)</span>&nbsp;
-			\(\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^\lt := \Sc_l \backslash \Sc_l^{\geq}\)
-		</div>
-		
-		<div class="substep code" style="position:absolute; left:40px; top:240px;"><span class="numbering">(c)</span>&nbsp;
-			<strong>for</strong> \(\tau \in \Sc_l^\lt\) <strong>do</strong> \(h(\tau) := \tau' \in S_{l-1}^{\geq}\) mit \(\tau \cup \tau'\) zsh. (ex. eind.)
-		</div>
-		
-		<div class="substep code" style="position:absolute; left:40px; top:290px;"><span class="numbering">(d)</span>&nbsp;
-			<strong>for</strong> \(\tau \in \Sc_l^{\geq}\) <strong>do</strong><br />
-			<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\)<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(und evtl. ein kürzerer)<br />
-			<span class="numbering">(f)</span>&nbsp;&nbsp;&nbsp; \(\Tc'_l(\tau) \gets \left\{T_r \cup \{\right.\)kürzeste Kante zu \(\left.s\} \mid T_r \in \Tc_l(\tau)\right\}\)
-		</div>
+		<div class="substep">
+			<div class="code" style="position:absolute; left:40px; top:120px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
+				\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap (V_l\times V_{\leq l})\) in Bäume <br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				mit genau einer Kante nach \(V_{\lt l}\)
+			</div>
+			
+			<div class="code" style="position:absolute; left:40px; top:210px;"><span class="numbering">(b)</span>&nbsp;
+				\(\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^\lt := \Sc_l \backslash \Sc_l^{\geq}\)
+			</div>
+			
+			<div class="code" style="position:absolute; left:40px; top:260px;"><span class="numbering">(c)</span>&nbsp;
+				<strong>for</strong> \(\tau \in \Sc_l^\lt\) <strong>do</strong> \(h(\tau) := \tau' \in S_{l-1}^{\geq}\) mit \(\tau \cup \tau'\) zsh. (ex. eind.)
+			</div>
+			
+			<div class="code" style="position:absolute; left:40px; top:310px;"><span class="numbering">(d)</span>&nbsp;
+				<strong>for</strong> \(\tau \in \Sc_l^{\geq}\) <strong>do</strong><br />
+				<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\)<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(und evtl. ein kürzerer)<br />
+				<span class="numbering">(f)</span>&nbsp;&nbsp;&nbsp; \(\Tc'_l(\tau) \gets \left\{T_r \cup \{\right.\)kürzeste Kante zu \(\left.s\} \mid T_r \in \Tc_l(\tau)\right\}\)
+			</div>
 
-		<div class="substep code" style="position:absolute; left:40px; top:460px;"><span class="numbering">(g)</span>&nbsp;
-			<strong>return</strong> \(\left(\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)\right)_{l\geq 0}\)
+			<div class="code" style="position:absolute; left:40px; top:480px;"><span class="numbering">(g)</span>&nbsp;
+				<strong>return</strong> \(\left(\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)\right)_{l\geq 0}\)
+			</div>
 		</div>
+		
+		<img src="Bilder/Decomposition0.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
+		<img src="Bilder/Decomposition1.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
+		<img src="Bilder/Decomposition2.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
+		<img src="Bilder/Decomposition3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
+		<img src="Bilder/Decomposition4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
+		<img src="Bilder/Decomposition5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
 	</div>
 
-	<div id="Zerlegung-Close2" class="step" data-x="-1000" data-y="-20" data-scale=".5">
-		<div class="substep theoremstyle l" style="position:absolute; left:300px; top:70px; font-size:130%;">
+	<div id="Zerlegung-Close2" class="step" data-x="-1000" data-y="-35" data-scale=".5">
+		<div class="substep theoremstyle l" style="position:absolute; left:300px; top:85px; font-size:130%;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (6, 40) \)-zuweisbar.
 		</div>
 		
-		<div class="substep theoremstyle d" style="position:absolute; left:300px; top:140px; font-size:130%; width:800px;">
+		<div class="substep theoremstyle d" style="position:absolute; left:300px; top:155px; font-size:130%; width:800px;">
 			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar, falls gilt:
 			<ul>
 				<li>Für alle \(T \in \Tc_l\) gilt: \(d(T) \leq \alpha 2^l M\) <!--<br />
@@ -343,18 +383,18 @@
 		<img src="Bilder/FractionalAssignment3.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
 		<img src="Bilder/FractionalAssignment4.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
 		
-		<div class="theoremstyletop d" style="position:absolute; left:20px; top:550px; width:600px;">
+		<div class="substep theoremstyletop d" style="position:absolute; left:20px; top:550px; width:600px;">
 			\((x_{Ti})\) ist \(L\)-sättigendes \(b\)-Matching, wenn gilt:<br />
 			\(\quad\sum_i x_{Ti} = b(T),\quad \sum_T x_{Ti} \leq b(i),\quad x_{Ti}\in\NN\)
 		</div>
 		
-		<div class="theoremstyletop s" style="position:absolute; right:0px; top:550px; width:600px;">
+		<div class="substep theoremstyletop s" style="position:absolute; right:0px; top:550px; width:600px;">
 			\(L\)-sättigendes \(b\)-Matching existiert genau dann,
 			wenn für alle \(K\subseteq L: b(K) \leq b(N(K))\)
 		</div>
 		
-		<div class="theoremstyletop l" style="position:absolute; left:20px; top:150px; width:350px; font-size:130%;">
-			\((L\cup R, F, b)\) besitzt ein \(L\)-sättigendes <span style="white-space: nowrap;">\(b\)-Matching</span> \((x_{Ti})\).<br />
+		<div class="substep theoremstyletop l" style="position:absolute; left:20px; top:150px; width:350px; font-size:130%;">
+			<span style="color:darkgreen;">\((L\)</span>\(\cup\)<span style="color:#FF6600;">\(R\)</span>\(, F, b)\) besitzt ein \(L\)-sättigendes <span style="white-space: nowrap;">\(b\)-Matching</span> \((x_{Ti})\).<br />
 			Es kann in Pol.-Zeit gefunden werden (z.B. mit Max-Flow).
 		</div>
 	</div>
@@ -362,41 +402,50 @@
 	<!-- #################### RoundingAssignment ############################# -->
 
 	<div id="Zuweisung-Close2" class="step" data-x="-1000" data-y="250" data-scale=".5">
-		<div class="substep theoremstyle l" style="position:absolute; left:100px; top:430px; font-size:130%;">
-			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
-		</div>
-		
+	
 		<img src="Bilder/RoundingAssignment0.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
-		<img src="Bilder/RoundingAssignment1.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
-		<img src="Bilder/RoundingAssignment2.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
-		<img src="Bilder/RoundingAssignment3.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
-		<img src="Bilder/RoundingAssignment4.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
 		
-		<div style="position:absolute; left:820px; top:170px; width:400px; color:#800080;">
-			\(i\) zugewiesener Anteil von \(T\)
-		</div>
-		<div style="position:absolute; left:820px; top:220px; width:400px;">
-			Zeit, die \(i\) für \(T\) benötigt
+		<div class="substep">
+			<img src="Bilder/RoundingAssignment1.svg" width="650" style="position:absolute; left:270px; top:170px;" />
+			<div style="position:absolute; left:820px; top:220px; width:400px;">
+				Zeit, die \(i\) für \(T\) benötigt
+			</div>
 		</div>
 
-		<div class="theoremstyle s" style="position:absolute; left:100px; top:500px; width:1100px;">
+		<div class="substep">		
+			<img src="Bilder/RoundingAssignment2.svg" width="650" style="position:absolute; left:270px; top:170px;" />
+			<div style="position:absolute; left:820px; top:170px; width:400px; color:#800080;">
+				\(i\) zugewiesener Anteil von \(T\)
+			</div>
+		</div>
+		
+		<img src="Bilder/RoundingAssignment3.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
+		<img src="Bilder/RoundingAssignment4.svg" class="substep" width="650" style="position:absolute; left:270px; top:170px;" />
+
+		<div class="substep theoremstyle s" style="position:absolute; left:100px; top:500px; width:1100px;">
 			Folgende Rundung von \((\tilde{x}_{Ti})\) zu \((x'_{Ti})\) ist in Pol.-Zeit möglich:
-			<div style="position:absolute; top:40px; left:20px; width:500px;">
+			<div style="supstep position:absolute; top:40px; left:20px; width:500px;">
 				\(\sum_{i\in M_T} \tilde{x}_{Ti} = 1, \quad \quad \tilde{x}_{Ti} \geq 0,\)<br />
 				\(\sum_{T\in J_i} p_{Ti}\tilde{x}_{Ti} \leq \beta M\)
 			</div>	
 			
-			<img src="Bilder/PfeilShort.svg" width="80" style="position:absolute; top:70px; left:440px;" />
-
-			<div style="position:absolute; top:40px; right:20px; width:500px;">
-				\(\sum_{i\in M_T} x'_{Ti} = 1, \quad \quad \quad x'_{Ti} \in \{0,1\}\)<br />
-				\(\sum_{T\in J_i} p_{Ti} x'_{Ti} \leq \beta M + 2\alpha\)
+			<div class="substep">
+				<img src="Bilder/PfeilShort.svg" width="80" style="position:absolute; top:70px; left:440px;" />
+				<div style="position:absolute; top:40px; right:20px; width:500px;">
+					\(\sum_{i\in M_T} x'_{Ti} = 1, \quad \quad \quad x'_{Ti} \in \{0,1\}\)<br />
+					\(\sum_{T\in J_i} p_{Ti} x'_{Ti} \leq \beta M + 2\alpha\)
+				</div>
 			</div>
 
 			<div style="position:absolute; top:140px; left:0px;">
 			 wobei \(J_i := \{T \mid p_{Ti} \leq 2\alpha\}\) und \(M_T := \{i \mid p_{Ti} \leq 2\alpha\}\)
 			</div>
-		</div>		
+		</div>
+
+		<div class="substep theoremstyle l" style="position:absolute; left:100px; top:430px; font-size:130%;">
+			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar \(\Rightarrow \left(\tau_i\right)\) ist \((4\alpha+2\beta)\)-approximativ
+		</div>
+		
 	</div>	
 	
 	<div id="Algorithm-Overview3" style="display:none;" class="step" data-x="-1300" data-y="0">
@@ -411,44 +460,50 @@
 	
 	</div>
 	 
-<!--	<div id="Blackbox" class="step" data-x="70" data-y="190" data-scale=".3" style="color:#FFFFFF;">
+	<div id="Blackbox" class="step" data-x="70" data-y="190" data-scale=".3" style="color:#FFFFFF;">
 		<div class="substep" style="position:absolute; right:100px; bottom:100px; width:25%; text-align:right;">
 			Instanz \(\Ic\) von \(\HetCVRP\)
 		</div>
-		
+
 		<div class="substep">
 			<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
-			<div style="position:absolute; right:400px; bottom:200px; text-align:center;">
-				<img src="Bilder/Reduktion.svg" width="300" /><br />
-				Reduktion
+			<div style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
+				Instanz \(\Jc\) von \(\HetTSP\) mit<br />
+				\(\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\)
 			</div>
 		</div>
 		
-		<div class="substep" style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
-			Instanz \(\Jc\) von \(\HetTSP\) mit<br />
-			\(\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\)
+		<div class="substep" style="position:absolute; right:400px; bottom:200px; text-align:center;">
+			<img src="Bilder/Reduktion.svg" width="300" /><br />
+			Reduktion
 		</div>
 		
-		<img src="Bilder/PfeilWeißUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
-		<div class="substep" style="position:absolute; left:200px; top:300px;">
-			\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &larr;)
+		<div class="substep">
+			<img src="Bilder/PfeilWeißUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
+			<div style="position:absolute; left:200px; top:300px;">
+				\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &larr;)
+			</div>
+			<div style="position:absolute; left:100px; top:150px; width:20%; text-align:left;">
+				\((\tau_i)\) Lsg. von \(\HetTSP\)
+			</div>
 		</div>
 		
-		<div class="substep" style="position:absolute; left:100px; top:150px; width:20%; text-align:left;">
-			\((\tau_i)\) Lsg. von \(\HetTSP\)
+		<div class="substep">
+			<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
+			<div style="position:absolute; right:100px; top:150px; width:50%; text-align:right;">
+				\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
+				\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
+			</div>		
+		</div>		
+		
+		<div class="substep">
+			<img src="Bilder/PfeilUp.svg" height="580" style="position:absolute; left:500px; top:-550px;" />
+			<div style="position:absolute; left:440px; top:200px; text-align:center;" />
+				Tour-Splitting<br />(fahrzeugweise)
+			</div>
 		</div>
 		
-		<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
-		<img src="Bilder/PfeilUp.svg" height="580" style="position:absolute; left:500px; top:-550px;" />
-		<div class="substep" style="position:absolute; left:440px; top:200px; text-align:center;" />
-			Tour-Splitting<br />(fahrzeugweise)
-		</div>
-		
-		<div class="substep" style="position:absolute; right:100px; top:150px; width:50%; text-align:right;">
-			\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
-			\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
-		</div>
-	</div>-->
+	</div>
 
 
 	<div id="Problems-Overview2" class="step" style="display:none;" data-x="100" data-y="0">

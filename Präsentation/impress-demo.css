@@ -276,6 +276,9 @@ ul {margin-left:1em;}
 .problemdef.z::before {content:"Lsg.:";}
 .problemdef.l::before {content:"Ziel.:";}
 
+span.highlightcolor {transition: color 7s;}
+.substep.past span.highlightcolor {color:#000000 !important;}
+
 .theoremstyle {
 	margin-left:3em;
 }
@@ -352,14 +355,14 @@ span.vanish.past {display:none;}
 
 
 
-/* Erstellen: */
+/* Erstellen: 
 .step {
-	/*border:2px #000000 solid;*/
+	border:2px #000000 solid;
 	opacity: 1 !important;
-	/*background-image:url(Grid.png);*/
+	background-image:url(Grid.png);
 }
 
-div.substep {
+.substep {
 	opacity: 1 !important;
 }
 
