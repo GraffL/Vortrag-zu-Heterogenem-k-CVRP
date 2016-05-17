@@ -273,8 +273,8 @@ ul {margin-left:1em;}
 }
 
 .problemdef.e::before {content:"Eing.:";}
-.problemdef.z::before {content:"Lsg.:";}
-.problemdef.l::before {content:"Ziel.:";}
+.problemdef.z::before {content:"Ziel:";}
+.problemdef.l::before {content:"Lsg.:";}
 
 span.highlightcolor {transition: color 7s;}
 .substep.past span.highlightcolor {color:#000000 !important;}
@@ -329,6 +329,17 @@ span.highlightcolor {transition: color 7s;}
 span.substep {transition:opacity 0s !important;}
 
 span.vanish.past {display:none;}
+
+
+.openBlackbox {
+	background-color:white; 
+	border-radius: 10px 10px; 
+	box-shadow: 4px 4px 4px #868686 inset;
+}
+
+#Blackbox {
+	transition: opacity 3s;
+}
 
 
 #sidebar {opacity:0;}

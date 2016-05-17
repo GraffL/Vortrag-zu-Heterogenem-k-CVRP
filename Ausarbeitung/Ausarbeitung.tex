@@ -226,7 +226,7 @@
 	
 	\begin{proof}
 		Sei $n' := \sum_v q_v = \left|V'\right|$ und $m := \lceil\frac{n'}{Q}\rceil$. Dann gilt für die Summe aller möglichen Routen:
-			\[\sum_{v,i} d'(\sigma_i^{(v)}) = 2m\sum_{v'\in V'}d'(s,v') + n'\cdot d(\tau)\]
+			\[\sum_{v,i} d'(\sigma_i^{(v)}) \leq 2m\sum_{v'\in V'}d'(s,v') + n'\cdot d(\tau)\]
 		Denn jeder Knoten ist genau einmal Anfangs- und einmal Endpunkt für jede der $m$ Teilstrecken (erster Summand) und jede Route entsteht durch Weglassen von Kanten aus der Tour $\tau$ (zweiter Summand).
 		
 		Die beste dieser Routen ist sicher mindestens so gut wie der Durchschnitt aus allen möglichen Routen, also:

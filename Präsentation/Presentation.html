@@ -223,8 +223,10 @@
 		
 		<div class="substep">
 			<div style="position:absolute; left:420px; top:440px;">
-				<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; color:#FFFFFF; font-weight:bold; text-align:center; border-radius:10px; box-shadow: 2px 2px 2px #868686;">
-					Blackbox
+				<div style="position:absolute; left:0px; top:0px; width:340px; height:190px; background-color:#000000; border-radius:10px; box-shadow: 2px 2px 2px #868686;">
+					<div style="position:absolute; left:0px; top:-5px; width:100%; color:#FFFFFF; font-weight:bold; text-align:center;">
+						Blackbox
+					</div>
 				</div>		
 				<img src="Bilder/Pfeil.svg" width="430" style="position:absolute; top:200px; left:-60px;" />
 			</div>
@@ -246,7 +248,7 @@
 		<div class="problem" style="transform:scale(.7); margin:-30px auto; width:40%;"><h2>Algorithmus für HetTSP</h2></div>
 	
 		<div class="substep code maincode" style="position:absolute; left:-10px; top:110px;"><span class="numbering">(1)</span>
-			Rate \(M\) mit \(\frac{M}{2}\leq \OPT \leq M\)
+			Rate \(M\) mit \(\OPT \leq M \leq 2\cdot\OPT\)
 		</div>
 		
 		<div class="substep code maincode" style="position:absolute; left:-10px; top:150px;"><span class="numbering">(2)</span>
@@ -304,7 +306,7 @@
 		<div class="theoremstyle l" style="position:absolute; left:300px; top:100px; font-size:130%;">\(\left(H_l\right)_{l\geq 0}\) erfüllt <span class="substep">(falls \(M\) korrekt geraten)</span>:
 			<ul>
 				<li>Knoten-Level entlang Wurzel-Blatt-Pfaden sind monoton wachsend.</li>
-				<li>Für alle \(j\geq 0\) gilt \(\sum_{l>j} d(H_l) \leq 8M\cdot \sum_{l\geq j}2^l\mu_l\)</li>
+				<li>Für alle \(l\geq 0\) gilt \(\sum_{j>l} d(H_j) \leq 8M\cdot \sum_{j\geq l}2^j\mu_j\)</li>
 			</ul>
 		</div>
 	</div>
@@ -317,53 +319,61 @@
 	<!-- #################### Decomposition ############################# -->
 	
 	<div id="Zerlegung-Close" class="step" data-x="-1620" data-y="-35" data-scale=".5">
-		
+
+		<img src="Bilder/Decomposition0.svg" width="500" style="position:absolute; left:1000px; top:155px;" />
+	
 		<div class="substep">
+			<img src="Bilder/Decomposition1.svg" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
 			<div class="code" style="position:absolute; left:40px; top:120px; width:1200px;"><span class="numbering">(a)</span>&nbsp;
 				\(\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l :=\) Zerl. von \(\Hc\cap (V_l\times V_{\leq l})\) in Bäume <br />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				mit genau einer Kante nach \(V_{\lt l}\)
 			</div>
-			
+		</div>
+
+		<div class="substep">	
+			<img src="Bilder/Decomposition2.svg" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
 			<div class="code" style="position:absolute; left:40px; top:210px;"><span class="numbering">(b)</span>&nbsp;
 				\(\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^\lt := \Sc_l \backslash \Sc_l^{\geq}\)
 			</div>
-			
+		</div>
+
+		<div class="substep">	
+			<img src="Bilder/Decomposition3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
 			<div class="code" style="position:absolute; left:40px; top:260px;"><span class="numbering">(c)</span>&nbsp;
 				<strong>for</strong> \(\tau \in \Sc_l^\lt\) <strong>do</strong> \(h(\tau) := \tau' \in S_{l-1}^{\geq}\) mit \(\tau \cup \tau'\) zsh. (ex. eind.)
 			</div>
-			
+		</div>
+
+		<div class="substep">
+			<img src="Bilder/Decomposition4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
+			<img src="Bilder/Decomposition5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
 			<div class="code" style="position:absolute; left:40px; top:310px;"><span class="numbering">(d)</span>&nbsp;
 				<strong>for</strong> \(\tau \in \Sc_l^{\geq}\) <strong>do</strong><br />
 				<span class="numbering">(e)</span>&nbsp;&nbsp;&nbsp; \(\Tc_l(\tau) \gets\) Part. \(\tau \cup h^{-1}(\tau)\) in Bäume d. Länge \(\left[2^{l+1}M, 2^{l+2}M\right]\)<br />
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(und evtl. ein kürzerer)<br />
 				<span class="numbering">(f)</span>&nbsp;&nbsp;&nbsp; \(\Tc'_l(\tau) \gets \left\{T_r \cup \{\right.\)kürzeste Kante zu \(\left.s\} \mid T_r \in \Tc_l(\tau)\right\}\)
 			</div>
+		</div>
 
+		<div class="substep">
 			<div class="code" style="position:absolute; left:40px; top:480px;"><span class="numbering">(g)</span>&nbsp;
 				<strong>return</strong> \(\left(\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)\right)_{l\geq 0}\)
 			</div>
 		</div>
-		
-		<img src="Bilder/Decomposition0.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
-		<img src="Bilder/Decomposition1.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
-		<img src="Bilder/Decomposition2.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
-		<img src="Bilder/Decomposition3.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
-		<img src="Bilder/Decomposition4.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px; background-color:white;" />
-		<img src="Bilder/Decomposition5.svg" class="substep" width="500" style="position:absolute; left:1000px; top:155px;" />
 	</div>
 
 	<div id="Zerlegung-Close2" class="step" data-x="-1000" data-y="-35" data-scale=".5">
 		<div class="substep theoremstyle l" style="position:absolute; left:300px; top:85px; font-size:130%;">
-			\( (\Tc_i)_{i\geq 0}\) ist \( (6, 40) \)-zuweisbar.
+			\( (\Tc_l)_{l\geq 0}\) ist \( (6, 40) \)-zuweisbar.
 		</div>
 		
 		<div class="substep theoremstyle d" style="position:absolute; left:300px; top:155px; font-size:130%; width:800px;">
-			\( (\Tc_i)_{i\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar, falls gilt:
+			\( (\Tc_l)_{l\geq 0}\) ist \( (\alpha, \beta) \)-zuweisbar, falls gilt:
 			<ul>
 				<li>Für alle \(T \in \Tc_l\) gilt: \(d(T) \leq \alpha 2^l M\) <!--<br />
 					<em>d.h. ein Baum aus \(\Tc_l\) kann mit Geschw. \(2^l\) in \(\Oc(\alpha M)\) besucht werden.</em>--></li>
-				<li>Für alle \(j \geq 0\) gilt: \(\sum_{l > j} d(\Tc_l) \leq \beta M \sum_{l\geq j} 2^l\mu_l\) <!--<br />
+				<li>Für alle \(l \geq 0\) gilt: \(\sum_{j > l} d(\Tc_j) \leq \beta M \sum_{j\geq l} 2^j\mu_j\) <!--<br />
 					<em>d.h. die Fahrzeuge mit Geschw. \(\geq 2^j\) können den Wald \(\Tc_{>j}\) in \(\Oc(\beta M)\) besuchen.</em>--></li>
 			</ul>
 		</div>
@@ -381,7 +391,6 @@
 		<img src="Bilder/FractionalAssignment1.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
 		<img src="Bilder/FractionalAssignment2.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
 		<img src="Bilder/FractionalAssignment3.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
-		<img src="Bilder/FractionalAssignment4.svg" class="substep" width="850" style="position:absolute; right:0px; top:150px;" />
 		
 		<div class="substep theoremstyletop d" style="position:absolute; left:20px; top:550px; width:600px;">
 			\((x_{Ti})\) ist \(L\)-sättigendes \(b\)-Matching, wenn gilt:<br />
@@ -395,7 +404,7 @@
 		
 		<div class="substep theoremstyletop l" style="position:absolute; left:20px; top:150px; width:350px; font-size:130%;">
 			<span style="color:darkgreen;">\((L\)</span>\(\cup\)<span style="color:#FF6600;">\(R\)</span>\(, F, b)\) besitzt ein \(L\)-sättigendes <span style="white-space: nowrap;">\(b\)-Matching</span> \((x_{Ti})\).<br />
-			Es kann in Pol.-Zeit gefunden werden (z.B. mit Max-Flow).
+			<span class="substep">Es kann in Pol.-Zeit gefunden werden (z.B. mit Max-Flow).</span>
 		</div>
 	</div>
 
@@ -424,7 +433,7 @@
 
 		<div class="substep theoremstyle s" style="position:absolute; left:100px; top:500px; width:1100px;">
 			Folgende Rundung von \((\tilde{x}_{Ti})\) zu \((x'_{Ti})\) ist in Pol.-Zeit möglich:
-			<div style="supstep position:absolute; top:40px; left:20px; width:500px;">
+			<div style="substep position:absolute; top:40px; left:20px; width:500px;">
 				\(\sum_{i\in M_T} \tilde{x}_{Ti} = 1, \quad \quad \tilde{x}_{Ti} \geq 0,\)<br />
 				\(\sum_{T\in J_i} p_{Ti}\tilde{x}_{Ti} \leq \beta M\)
 			</div>	
@@ -433,12 +442,12 @@
 				<img src="Bilder/PfeilShort.svg" width="80" style="position:absolute; top:70px; left:440px;" />
 				<div style="position:absolute; top:40px; right:20px; width:500px;">
 					\(\sum_{i\in M_T} x'_{Ti} = 1, \quad \quad \quad x'_{Ti} \in \{0,1\}\)<br />
-					\(\sum_{T\in J_i} p_{Ti} x'_{Ti} \leq \beta M + 2\alpha\)
+					\(\sum_{T\in J_i} p_{Ti} x'_{Ti} \leq \beta M + 2\alpha M\)
 				</div>
 			</div>
 
 			<div style="position:absolute; top:140px; left:0px;">
-			 wobei \(J_i := \{T \mid p_{Ti} \leq 2\alpha\}\) und \(M_T := \{i \mid p_{Ti} \leq 2\alpha\}\)
+			 wobei \(J_i := \{T \mid p_{Ti} \leq 2\alpha M\}\) und \(M_T := \{i \mid p_{Ti} \leq 2\alpha M\}\)
 			</div>
 		</div>
 
@@ -460,26 +469,29 @@
 	
 	</div>
 	 
-	<div id="Blackbox" class="step" data-x="70" data-y="190" data-scale=".3" style="color:#FFFFFF;">
-		<div class="substep" style="position:absolute; right:100px; bottom:100px; width:25%; text-align:right;">
+	<div id="Blackbox" class="step" data-x="70" data-y="190" data-scale=".3">
+		<div class="openBlackbox" style="position:absolute; left:70px; right:100px; top:130px; bottom:80px;"></div> 
+		<div class="nosubstep" style="position:absolute; right:120px; bottom:100px; width:25%; text-align:right;">
 			Instanz \(\Ic\) von \(\HetCVRP\)
 		</div>
 
-		<div class="substep">
-			<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
+		<div class="nosubstep">
+			<img src="Bilder/PfeilSchwarz.svg" width="400" style="position:absolute; right:340px; bottom:140px; transform: scale(-1, -1);" />
 			<div style="position:absolute; left:100px; bottom:100px; width:50%; text-align:left;">
 				Instanz \(\Jc\) von \(\HetTSP\) mit<br />
 				\(\OPT_\HetTSP(\Jc) \in \Oc(1)\cdot\OPT_\HetCVRP(\Ic)\)
 			</div>
 		</div>
 		
-		<div class="substep" style="position:absolute; right:400px; bottom:200px; text-align:center;">
-			<img src="Bilder/Reduktion.svg" width="300" /><br />
-			Reduktion
+		<div class="substep" style="position:absolute; right:350px; bottom:180px; width:400px; text-align:center;">
+			<img src="Bilder/Reduktion0.svg" style="position:absolute; bottom:40px; left:0px;" width="400" />
+			<div style="position:absolute; bottom:0px; left:0px; width:100%; text-align:center;">Reduktion</div>
+			<img src="Bilder/Reduktion1.svg" class="substep" style="position:absolute; bottom:40px; left:0px;" width="400" />
+			<img src="Bilder/Reduktion2.svg" class="substep" style="position:absolute; bottom:40px; left:0px;" width="400" />
 		</div>
 		
-		<div class="substep">
-			<img src="Bilder/PfeilWeißUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
+		<div class="nosubstep">
+			<img src="Bilder/PfeilSchwarzUp.svg" height="250" style="position:absolute; left:150px; top:250px;" />
 			<div style="position:absolute; left:200px; top:300px;">
 				\(\Oc(1)\)-approx.<br />Algorithmus<br />(von &larr;)
 			</div>
@@ -488,15 +500,15 @@
 			</div>
 		</div>
 		
-		<div class="substep">
-			<img src="Bilder/PfeilWeiß.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
-			<div style="position:absolute; right:100px; top:150px; width:50%; text-align:right;">
+		<div class="nosubstep">
+			<img src="Bilder/PfeilSchwarz.svg" width="400" style="position:absolute; left:340px; top:150px; transform: scale(1, -1);" />
+			<div style="position:absolute; right:120px; top:150px; width:50%; text-align:right;">
 				\((\sigma_i)\) Lsg von \(\HetCVRP\) mit<br />
 				\(\max \frac{d(\sigma_i)}{\lambda_i} \in \Oc(1)\cdot \max \frac{d(\tau_i)}{\lambda_i}\)
 			</div>		
 		</div>		
 		
-		<div class="substep">
+		<div class="nosubstep">
 			<img src="Bilder/PfeilUp.svg" height="580" style="position:absolute; left:500px; top:-550px;" />
 			<div style="position:absolute; left:440px; top:200px; text-align:center;" />
 				Tour-Splitting<br />(fahrzeugweise)
