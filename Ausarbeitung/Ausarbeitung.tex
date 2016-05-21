@@ -152,7 +152,17 @@
 	
 	\newpage
 	\section{Algorithmen für \HomTSP und \CVRP}
+
+	\subsection*{Vorbemerkungen}
 	
+	Verwendet folgende Konvention: Eine Funktion $f: M \to \RR$ induziert Funktionen 
+	\[\tilde{f}: \mathcal{P}(M) \to \RR: N \mapsto \sum_{m\in N} f(m) \]
+	und 
+	\[\hat{f}_n: \prod_{i=1}^n M \to \RR: (m_i) \mapsto \sum_{i=1}^n f(m_i). \]
+	die wir unter Überladung der Notation ebenfalls mit $f$ bezeichnen werden.
+	
+	
+	\newpage
 	\subsection{Algorithmus für \HomTSP}
 
 	\begin{algorithm}[H]
@@ -185,6 +195,8 @@
 		\end{align*}
 	\end{proof}
 	
+	
+	\newpage
 	\subsection{Algorithmus für \CVRP}
 	
 	\begin{algorithm}[H]
@@ -195,12 +207,12 @@
 			\State $d'(v^{(i)}, u^{(j)}) := d(v,u)$
 			\State $\tau \gets$ \textsc{TSP-Approx} $\left(G', d'\right)$
 			\For{$v \in V'$}
-				\State $\left(\pi_i^{(v)}\right) \gets$ Teile $\tau$ durch Kantenlöschen in Teilstrecken mit max. $Q$ Knoten,
+				\State $\left(\pi_r^{(v)}\right) \gets$ Teile $\tau$ durch Kantenlöschen in Teilstrecken mit max. $Q$ Knoten,
 				\Statex \hspace{8em} wobei die erste Strecke bei $v$ beginnt.
-				\State $\left(\sigma_i^{(v)}\right) \gets$ Verbinde die zwei Endpunkte von $\pi^{(v)}_i$ mit $s$.
+				\State $\left(\sigma_r^{(v)}\right) \gets$ Verbinde die zwei Endpunkte von $\pi^{(v)}_r$ mit $s$.
 			\EndFor
-			\State $\left(\sigma_i\right) \gets \left(\sigma_i^{(v)}\right)$ mit $\sum_i d'(\sigma_i^{(v)})$ minimal.
-			\State \Return $\left(\sigma_i\right)$
+			\State $\left(\sigma_r\right) \gets \left(\sigma_r^{(v)}\right)$ mit $\sum_r d'(\sigma_r^{(v)})$ minimal.
+			\State \Return $\left(\sigma_r\right)$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}	
@@ -213,11 +225,11 @@
 	\begin{proof}
 		Die erste Abschätzung ist klar (eine \CVRP-Route ist insbesondere auch eine \TSP-Tour).
 		
-		Für die zweite Abschätzung betrachte eine optimale Route $\left(\sigma_i^\ast\right)$, wobei $S_i \subseteq V'$ die in der $i$-ten Tour besuchten Knoten seien. Dann gilt offenbar:
-			\[d\left(\sigma_i^\ast\right) \geq 2\cdot \max\left\lbrace d(s,v') \mid v'\in S_i\right\rbrace \geq 2\frac{\sum_{v'\in V'}d(s,v')}{\left|S_i\right|} \geq \frac{2}{Q}\sum_{v'\in S_i}d(s,v')\]
+		Für die zweite Abschätzung betrachte eine optimale Route $\left(\sigma_r^\ast\right)$, wobei $S_r \subseteq V'$ die in der $r$-ten Tour besuchten Knoten seien. Dann gilt offenbar:
+			\[d\left(\sigma_i^\ast\right) \geq 2\cdot \max\left\lbrace d(s,v') \mid v'\in S_r\right\rbrace \geq 2\frac{\sum_{v'\in V'}d(s,v')}{\left|S_r\right|} \geq \frac{2}{Q}\sum_{v'\in S_r}d(s,v')\]
 		
-		Da jeder Knoten aus $V'$ in wenigstens einem $S_i$ enthalten sein muss, folgt damit:
-			\[\OPT_\CVRP = \sum_i d\left(\sigma_i^\ast\right) \geq \frac{2}{Q}\sum_i\sum_{v'\in S_i}d(s,v') \geq \frac{2}{Q}\sum_{v'\in V'}d(s,v')\]
+		Da jeder Knoten aus $V'$ in wenigstens einem $S_r$ enthalten sein muss, folgt damit:
+			\[\OPT_\CVRP = \sum_r d\left(\sigma_i^\ast\right) \geq \frac{2}{Q}\sum_r\sum_{v'\in S_r}d(s,v') \geq \frac{2}{Q}\sum_{v'\in V'}d(s,v')\]
 	\end{proof}
 	
 	\begin{lemma}[Lemma 2 in \cite{CVRPApprox}\footnote{Wie über eine genauere Abschätzung in \cite{CVRPApprox} gezeigt wird, erreicht der Algorithmus sogar eine Approximationsgüte von $\rho + \lceil\frac{n'}{Q}\rceil \frac{Q-\rho}{n'}$, wobei $n' := \sum_v q_v$}]\label{AlgCVRPProof}
@@ -226,13 +238,13 @@
 	
 	\begin{proof}
 		Sei $n' := \sum_v q_v = \left|V'\right|$ und $m := \lceil\frac{n'}{Q}\rceil$. Dann gilt für die Summe aller möglichen Routen:
-			\[\sum_{v,i} d'(\sigma_i^{(v)}) \leq 2m\sum_{v'\in V'}d'(s,v') + n'\cdot d(\tau)\]
+			\[\sum_{v,r} d'(\sigma_r^{(v)}) \leq 2m\sum_{v'\in V'}d'(s,v') + n'\cdot d(\tau)\]
 		Denn jeder Knoten ist genau einmal Anfangs- und einmal Endpunkt für jede der $m$ Teilstrecken (erster Summand) und jede Route entsteht durch Weglassen von Kanten aus der Tour $\tau$ (zweiter Summand).
 		
 		Die beste dieser Routen ist sicher mindestens so gut wie der Durchschnitt aus allen möglichen Routen, also:
-			\[\sum_{i} d'(\sigma_i) = 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + d(\tau) \leq 2\frac{\frac{n'}{Q}+1}{n'}\sum_{v'\in V'}d'(s,v')+ d(\tau) \leq  2\cdot\frac{2}{Q}\sum_{v'\in V'}d'(s,v') + \rho\cdot\OPT_\TSP\]
+			\[\sum_{r} d'(\sigma_r) = 2\frac{m}{n'}\sum_{v'\in V'}d'(s,v') + d(\tau) \leq 2\frac{\frac{n'}{Q}+1}{n'}\sum_{v'\in V'}d'(s,v')+ d(\tau) \leq  2\cdot\frac{2}{Q}\sum_{v'\in V'}d'(s,v') + \rho\cdot\OPT_\TSP\]
 		Zusammen mit \Cref{CVRPLowerBound} ergibt dies:
-			\[\sum_{i} d'(\sigma_i) \leq 2\cdot\OPT_\CVRP + \rho\cdot\OPT_\CVRP \leq \left(2+\rho\right)\cdot\OPT_\CVRP\]
+			\[\sum_{r} d'(\sigma_r) \leq 2\cdot\OPT_\CVRP + \rho\cdot\OPT_\CVRP \leq \left(2+\rho\right)\cdot\OPT_\CVRP\]
 	\end{proof}
 	
 	\section{Algorithmus für \HetTSP}
@@ -241,10 +253,10 @@
 		\caption{HetTSP-Approx}\label{AlgHetTSP}
 		\begin{algorithmic}[1]
 			\Procedure{HetTSP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
-			\State Rate $M$ mit $\frac{M}{2} \leq \OPT \leq M$
-			\State $\Hc := \left(H_i\right)_{i\geq 0} \gets$ \textsc{Level-Prime} $\left(G, d\right)$
+			\State Rate $M$ mit $\OPT \leq M \leq 2\cdot\OPT$
+			\State $\Hc := \left(H_l\right)_{l\geq 0} \gets$ \textsc{Level-Prime} $\left(G, d\right)$
 			\Statex \Comment{$\Hc$ erfüllt: Wurzel-Blatt Pfade haben aufsteigende Knoten-Level}
-			\Statex \Comment{\phantom{$\Hc$ erfüllt:} und $\forall i: \sum_{j\geq i}d\left(H_j\right)\leq 8 M \sum_{j\geq i-1}2^j\mu_j$ (wenn $M$ korrekt geraten)}
+			\Statex \Comment{\phantom{$\Hc$ erfüllt:} und $\forall l: \sum_{j\geq l}d\left(H_j\right)\leq 8 M \sum_{j\geq l-1}2^j\mu_j$ (wenn $M$ korrekt geraten)}
 			\State $\Tc := \left(\Tc_i\right)_{i\geq 0} \gets$ \textsc{Decomposition} $\left(\Hc\right)$
 			\Statex \Comment{$\Tc$ ist $\left(6, 40\right)$-zuweisbarer Wald}
 			\State $\left(x_{ij}\right) \gets$ \textsc{FractionalAssignment}  $\left(\Tc\right)$
