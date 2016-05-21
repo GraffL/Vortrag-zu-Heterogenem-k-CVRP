@@ -254,13 +254,13 @@
 		\begin{algorithmic}[1]
 			\Procedure{HetTSP}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
 			\State Rate $M$ mit $\OPT \leq M \leq 2\cdot\OPT$
-			\State $\Hc := \left(H_l\right)_{l\geq 0} \gets$ \textsc{Level-Prime} $\left(G, d\right)$
+			\State $\Hc := \left(H_l\right)_{l\geq 0} \gets$ \textsc{LevelPrim} $\left(G, d\right)$
 			\Statex \Comment{$\Hc$ erfüllt: Wurzel-Blatt Pfade haben aufsteigende Knoten-Level}
-			\Statex \Comment{\phantom{$\Hc$ erfüllt:} und $\forall l: \sum_{j\geq l}d\left(H_j\right)\leq 8 M \sum_{j\geq l-1}2^j\mu_j$ (wenn $M$ korrekt geraten)}
-			\State $\Tc := \left(\Tc_i\right)_{i\geq 0} \gets$ \textsc{Decomposition} $\left(\Hc\right)$
+			\Statex \Comment{\phantom{$\Hc$ erfüllt:} und $\forall l: \sum_{j > l}d\left(H_j\right)\leq 8 M \sum_{j\geq l}2^j\mu_j$ (wenn $M$ korrekt geraten)}
+			\State $\Tc := \left(\Tc_l\right)_{l\geq 0} \gets$ \textsc{Decomposition} $\left(\Hc\right)$
 			\Statex \Comment{$\Tc$ ist $\left(6, 40\right)$-zuweisbarer Wald}
-			\State $\left(x_{ij}\right) \gets$ \textsc{FractionalAssignment}  $\left(\Tc\right)$
-			\State $\left(\tau_i\right) \gets$ \textsc{RoundingAssignment} $\left(x_{ij}\right)$
+			\State $\left(x_{Ti}\right) \gets$ \textsc{FractionalAssignment}  $\left(\Tc\right)$
+			\State $\left(\tau_i\right) \gets$ \textsc{RoundingAssignment} $\left(x_{Ti}\right)$
 			\Statex \Comment{$\Tc$ ist $\left(\alpha, \beta\right)$-zuweisbar $\Rightarrow$ $\left(\tau_i\right)$ ist $\left(4\alpha+2\beta\right)$-approx.}
 			\State \Return $\left(\tau_i\right)$
 			\EndProcedure
@@ -275,32 +275,32 @@
 		Folgende Kapitel...
 	\end{proof}
 	
-	\subsection{Level-Prime}
+	\subsection{LevelPrim}
 	
 	\begin{algorithm}[H]
-		\caption{Level-Prime}\label{AlgLevelPrime}
+		\caption{LevelPrim}\label{AlgLevelPrim}
 		\begin{algorithmic}[1]
-			\Procedure{Level-Prime}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
-			\State $V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace,\quad V_i := \left\lbrace v \in V \mid 2^{i-1}M < d(s,v) \leq 2^i M\right\rbrace$
-			\LineFor{$i\geq 0$}{$H_i \gets$ Minimaler Spannbaum auf $G\left[V_{\leq i}\right]/V_{<i}$}
-			\State \Return $\left(H_i\right)_{i\geq 0}$
+			\Procedure{LevelPrim}{$G=(V,E)$, $d:E\to \RR_{\geq 0}$}
+			\State $V_0 := \left\lbrace v\in V \mid d(s,v) \leq M\right\rbrace,\quad V_l := \left\lbrace v \in V \mid 2^{l-1}M < d(s,v) \leq 2^l M\right\rbrace$
+			\LineFor{$i\geq 0$}{$H_l \gets$ Minimaler Spannbaum auf $G\left[V_{\leq l}\right]/V_{<l}$}
+			\State \Return $\left(H_l\right)_{l\geq 0}$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}	
 	
 	\begin{lemma}[Theorem 3.3 in \cite{HetCVRP}]
-		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
+		Ein von \cref{AlgLevelPrim} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
 		\begin{itemize}
 			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
-			\item $\forall j\geq 0: \sum_{l\geq j} d(H_l) \leq 8\cdot \MST(G/V_{<j})$
+			\item $\forall l\geq 0: \sum_{j\geq l} d(H_j) \leq 8\cdot \MST(G/V_{<l})$
 		\end{itemize}
 	\end{lemma}
 	
 	\begin{kor}[Korollar 3.5 in \cite{HetCVRP}]
-		Ein von \cref{AlgLevelPrime} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
+		Ein von \cref{AlgLevelPrim} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
 		\begin{itemize}
 			\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
-			\item $\forall j\geq 1: \sum_{l>j} d(H_l) \leq 8M\cdot \sum_{l\geq j}2^l\mu_l$
+			\item $\forall l\geq -1: \sum_{j>l} d(H_j) \leq 8M\cdot \sum_{j\geq l}2^j\mu_j$
 		\end{itemize}
 	\end{kor}
 	
@@ -311,7 +311,7 @@
 		\caption{Decomposition}\label{AlgDecomposition}
 		\begin{algorithmic}[1]
 			\Procedure{Decomposition}{$\left(\Hc\right)$}
-			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l := \text{Zerl. von } \Hc\cap E_l \text{ in Bäume mit genau einer Kante nach } V_l$
+			\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l := \text{Zerl. von } \Hc\cap E_l \text{ in Bäume mit genau einer Kante nach } V_{<l}$
 			\State $\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^< := \Sc_l \backslash \Sc_l^{\geq}$
 			\LineFor{$\tau \in \Sc_l^{<}$}{$h(\tau) := \tau' \in S_{l-1}^{\geq}$ mit $\tau \cup \tau'$ zsh. (ex. eind.)}
 			\For{$\tau \in \Sc_l^{\geq}$}
@@ -330,9 +330,9 @@
 		\begin{itemize}
 			\item Für alle $T \in \Tc_l$ gilt: $d(T) \leq \alpha 2^l M$ \\
 			\textit{d.h. ein Baum aus $\Tc_l$ kann mit Geschw. $2^l$ in $\Oc(\alpha M)$ besucht werden.}
-			\item Für alle $k \geq 1$ gilt: $\sum_{l > k} d(\Tc_l) \leq \beta M \sum_{l\geq k} 2^l\mu_l$
+			\item Für alle $l \geq -1$ gilt: $\sum_{j > l} d(\Tc_j) \leq \beta M \sum_{j\geq l} 2^j\mu_j$
 			
-			\textit{d.h. die Fahrzeuge mit Geschw. $\geq 2^k$ können den Wald $\Tc_{>k}$ in $\Oc(\beta M)$ besuchen.}
+			\textit{d.h. die Fahrzeuge mit Geschw. $\geq 2^l$ können den Wald $\Tc_{>l}$ in $\Oc(\beta M)$ besuchen.}
 		\end{itemize}
 	\end{defn}
 	
@@ -349,17 +349,32 @@
 			\Procedure{FractionalAssignment}{$\left(\Tc\right)$}
 			\State $L := \{T \in \Tc\},\quad b(T) := d(T)$, \quad $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta M 2^{\lambda_i}$
 			\State $F := \{\{T,i\} \mid T \in \Tc_l, \lambda_i \geq l-1\}$ 
-			\State Bestimme $L$-überdeckendes $b$-Matching $x_{Ti}$.
+			\State Bestimme $L$-überdeckendes $b$-Matching $\left(x_{Ti}\right)$.
 			\State \Return $\left(x_{Ti}\right)$
 			\EndProcedure
 		\end{algorithmic}
 	\end{algorithm}
 	
-	\begin{prop}[Seite 54 (?) in \cite{bMatching}]
-		$b$-Matching existiert und kann mit Max-Flow in polynomieller Zeit gefunden werden.
+	\begin{defn}
+		$(x_{Ti})$ ist \emph{$L$-sättigendes $b$-Matching}, wenn gilt:
+			\[\sum_i x_{Ti} = b(T),\quad \sum_T x_{Ti} \leq b(i),\quad x_{Ti}\in\NN\]
+	\end{defn}
+	
+	\begin{prop}[Seite 54f in \cite{bMatching}]
+		Ein $L$-sättigendes $b$-Matching existiert genau dann, wenn für alle $K\subseteq L: b(K) \leq b(N(K))$, wobei $N(K) := \left\{i\in R \mid \exists T \in K: \{T,i\} \in F \right\}$.
 	\end{prop}
 	
-	\begin{algorithm}
+	\begin{lemma}
+		Der in \cref{AlgFractionalAssignment} definierte Hilfsgraph besitzt ein $L$-sättigendes $b$-Matching.
+	\end{lemma}
+	
+	\begin{proof}
+		Sei $K \subseteq L$ und $l := \min \left\{j \mid K\cup \Tc_j \neq \emptyset\right\}-1$, dann gilt:
+			\[b(K) = \sum_{T\in K} d(T) \leq \sum_{T \in \Tc_{j> l}}d(T) \overset{(\ast)}{\leq} \beta M \sum_{j\geq l} 2^j\mu_j \overset{(\#)}{=} \sum_{i\in N(K)}\beta M 2^j = b(N(K))\]
+		Dabei ist $(\ast)$ gerade die zweite Bedingung für $(\alpha, \beta)$-Zuweisbarkeit und $(\#)$ folgt aus der Definition der Kantenmenge $F$ ($K$ enthält einen Baum mit Level $l+1$. Dieser ist bereits mit allen Fahrzeugen von Geschwindigkeit $2^l$ und mehr verbunden). 
+	\end{proof}
+	
+	\begin{algorithm}[H]
 		\caption{RoundingAssignment}\label{AlgRoundingAssignment}
 		\begin{algorithmic}[1]
 			\Procedure{RoundingAssignment}{$\left(x_{Ti}\right)$}
