@@ -36,7 +36,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\slash\slash$ #1}
-\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2} \algorithmicend\ \algorithmicfor}
+\newcommand{\LineFor}[2]{\State\algorithmicfor\ {#1}\ \algorithmicdo\ {#2}}
 
 
 \usepackage[left=2.5cm, right=2.5cm, bottom=2cm, top=2.5cm]{geometry}
@@ -46,7 +46,7 @@
 \setlength\parindent{0pt}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
+\newtheorem{defn}{Definition}
 \newtheorem{axiom}[defn]{Axiom}
 \newtheorem{bsp}[defn]{Beispiel}
 
@@ -179,13 +179,13 @@
 		\begin{algorithm}[H]\footnotesize
 			\caption{\small \textsc{Decomposition}$\left(\Hc\right)$}\label{AlgDecomposition}
 			\begin{algorithmic}[1]
-				\State $\Sc_0 := \left\lbrace H_0 \right\rbrace,\quad \Sc_l := \text{Zerl. von } \Hc\cap E_l \text{ in Bäume mit genau einer Kante nach } V_{<l}$
+				\State $\Sc_0 := \left\lbrace H_0 \right\rbrace$
+				\State $\Sc_l := \text{Zerl. } \Hc\cap E_l \text{ in Bäume mit Wurzel in } V_{<l}$
 				\State $\Sc_l^{\geq} := \left\{\tau \in \Sc_l \mid d(\tau) \geq 2^{l-3}M\right\}, \Sc_l^< := \Sc_l \backslash \Sc_l^{\geq}$
-				\LineFor{$\tau \in \Sc_l^{<}$}{$h(\tau) := \tau' \in S_{l-1}^{\geq}$ mit $\tau \cup \tau'$ zsh. (ex. eind.)}
+				\LineFor{$\tau \in \Sc_l^{<}$}{$h(\tau) := \tau' \in S_{l-1}^{\geq}$ mit $\tau \cup \tau'$ zsh}
 				\For{$\tau \in \Sc_l^{\geq}$}
-				\State $\Tc_l(\tau) \gets$ Partition von $\tau \cup h^{-1}(\tau)$ in Bäume der Länge $\left[2^{l+1}M, 2^{l+2}M\right]$ 
-				\Statex \hspace{6.5em} (und evtl. ein kürzerer)
-				\State $\Tc'_l(\tau) \gets \left\{T_r \cup \{\text{kürzeste Kante zu } s\} \mid T_r \in \Tc_l(\tau)\right\}$
+				\State $\Tc_l(\tau) \gets$ Partition von $\tau \cup h^{-1}(\tau)$ in Bäume der Länge $\left[2^{l+1}M, 2^{l+2}M\right]$ (und evtl. ein kürzerer)
+				\State $\Tc'_l(\tau) \gets \left\{T_r \cup \{\text{ Kante zu } s\} \mid T_r \in \Tc_l(\tau)\right\}$
 				\EndFor
 				\State $\Tc_l := \bigcup_{\tau \in \Sc_l^{\geq}}\Tc'_l(\tau)$
 				\State \Return $\left(\Tc_l\right)_{l\geq 0}$
@@ -195,9 +195,10 @@
 		\begin{algorithm}[H]\footnotesize
 			\caption{\small \textsc{FractionalAssignment}$\left(\Tc\right)$}\label{AlgFractionalAssignment}
 			\begin{algorithmic}[1]
-				\State $L := \{T \in \Tc\},\quad b(T) := d(T)$, \quad $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta M 2^{\lambda_i}$
+				\State $L := \{T \in \Tc\},\quad b(T) := d(T)$
+				\State $R := \{i \mid 1\leq i \leq k\},\quad b(i) := \beta M 2^{\lambda_i}$
 				\State $F := \{\{T,i\} \mid T \in \Tc_l, \lambda_i \geq l-1\}$ 
-				\State Bestimme $L$-überdeckendes $b$-Matching $\left(x_{Ti}\right)$.
+				\State $\left(x_{Ti}\right) \gets$ $L$-überdeckendes $b$-Matching
 				\State \Return $\left(x_{Ti}\right)$
 			\end{algorithmic}
 		\end{algorithm}
@@ -215,19 +216,26 @@
 		\phantom{Hallo}
 	\end{minipage}
 	\begin{minipage}{0.45\textwidth}
-		\begin{satz}[Theorem 1.1 in \cite{HetCVRP}]
+		\vspace{4em}
+		
+		\begin{satz}[Theorem 1.1 in \cite{HetCVRP}]~
+			
 			\Cref{AlgHetTSP} ist ein $\Oc(1)$-approximativer Algorithmus für \HetTSP.
 		\end{satz}
+		
+		\vspace{3em}
 
-		\begin{kor}[Korollar 3.5 in \cite{HetCVRP}]
+		\begin{lemma}[Korollar 3.5 in \cite{HetCVRP}]~
+			
 			Ein von \cref{AlgLevelPrim} gefundener Baum $\left(H_l\right)_{l\geq 0}$ erfüllt:
 			\begin{itemize}
 				\item Die Knoten-Level entlang jedes Wurzel-Blatt-Pfades sind monoton wachsend.
 				\item $\forall l\geq -1: \sum_{j>l} d(H_j) \leq 8M\cdot \sum_{j\geq l}2^j\mu_j$
 			\end{itemize}
-		\end{kor}
+		\end{lemma}
 
-		\begin{defn}[Definition 3.1 in \cite{HetCVRP}]
+		\begin{defn}[Definition 3.1 in \cite{HetCVRP}]~
+			
 			Ein Wald $\Tc = \bigcup_{l\geq 0} \Tc_l$ aus Bäumen mit Wurzel $s$ heißt $(\alpha, \beta)$-zuweisbar, wenn gilt:
 			\begin{itemize}
 				\item Für alle $T \in \Tc_l$ gilt: $d(T) \leq \alpha 2^l M$ \\
@@ -238,20 +246,23 @@
 			\end{itemize}
 		\end{defn}
 		
-		\begin{lemma}[Lemma 3.11 in \cite{HetCVRP}]
+		\begin{lemma}[Lemma 3.11 in \cite{HetCVRP}]~
+			
 			Die von \cref{AlgDecomposition} bestimmte Zerlegung $\Tc = (\Tc_i)_{i\geq 0}$ ist $(6, 40)$-zuweisbar.
 		\end{lemma}
 
 		\begin{defn}
-			$(x_{Ti})$ ist \emph{$L$-sättigendes $b$-Matching}, wenn gilt:
+			$(x_{Ti})$ ist \emph{$L$-sättigendes $b$-Matching} für $(L\cup R, F)$, wenn gilt:
 			\[\sum_i x_{Ti} = b(T),\quad \sum_T x_{Ti} \leq b(i),\quad x_{Ti}\in\NN\]
 		\end{defn}
 		
-		\begin{lemma}[Seite 54f in \cite{bMatching}]
+		\begin{lemma}[Seite 54f in \cite{bMatching}]~
+			
 			Der in \cref{AlgFractionalAssignment} definierte Hilfsgraph besitzt ein $L$-sättigendes $b$-Matching.
 		\end{lemma}
 
-		\begin{lemma}[Theorem 1 in \cite{Rounding}, Lemma 3.2 in \cite{HetCVRP}]
+		\begin{lemma}[Theorem 1 in \cite{Rounding}, Lemma 3.2 in \cite{HetCVRP}]~
+			
 			Gegeben einen $(\alpha, \beta)$-zuweisbaren Wald, liefern \cref{AlgFractionalAssignment} und \cref{AlgRoundingAssignment} eine $(4\alpha+2\beta)$-approximative Lösung für \HetTSP.
 		\end{lemma}
 	\end{minipage}

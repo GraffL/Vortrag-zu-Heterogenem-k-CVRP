@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20160326182644" modified="D:20160508174618" title="Analysis I - Zusammenfassung"/>
+<info created="D:20160326182644" modified="D:20160522160612" title="Analysis I - Zusammenfassung"/>
 <preamble>\usepackage[utf8]{inputenc}
 
 \usepackage[ngerman]{babel}
@@ -401,7 +401,7 @@ z.B. Christofides ($\rho = 1,5$)</text>
 <text matrix="8.61241 0 0 1.04575 -22.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-approximativer Algorithmus
 
 (Theorem 1.1 in [G\o+10])</text>
-<text matrix="8.61241 0 0 1.04575 -21.938 -263.567" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="7.473" depth="2.49" valign="top">$\mathcal{O}(1)$-approximativer Algorithmus</text>
+<text matrix="8.61241 0 0 1.04575 -9.08681 -263.567" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="7.473" depth="2.49" valign="top">$\mathcal{O}(1)$-approximativer Algorithmus</text>
 <text matrix="0 -1 1 0 72.6396 459.274" pos="64 480" stroke="black" type="minipage" width="128" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-Reduktion:
 
 (Theorem 4.1 in [G\o+10])</text>
@@ -445,6 +445,27 @@ $\max \nicefrac{d(\sigma_i)}{2^{\lambda_i}} \in \Oc(1)\cdot \max \nicefrac{d(\ta
 272 336 l
 </path>
 <path matrix="0.93797 0 0 1.02273 29.8224 -9.81392" stroke="0">
+316.366 407.177 m
+316.366 431.813 l
+480.773 431.813 l
+480.773 407.177 l
+h
+</path>
+<path matrix="0.93797 0 0 1.02273 -258.178 -9.81392" stroke="0">
+316.366 407.177 m
+316.366 431.813 l
+480.773 431.813 l
+480.773 407.177 l
+h
+</path>
+<path matrix="0.950504 0 0 0.766212 -262.143 -64.3897" stroke="0">
+316.366 407.177 m
+316.366 431.813 l
+480.773 431.813 l
+480.773 407.177 l
+h
+</path>
+<path matrix="0.961414 0 0 0.667815 20.6435 -23.3592" stroke="0">
 316.366 407.177 m
 316.366 431.813 l
 480.773 431.813 l
