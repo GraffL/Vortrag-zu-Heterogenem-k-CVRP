@@ -369,8 +369,8 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Sei $K \subseteq L$ und $l := \min \left\{j \mid K\cup \Tc_j \neq \emptyset\right\}-1$, dann gilt:
-			\[b(K) = \sum_{T\in K} d(T) \leq \sum_{T \in \Tc_{j> l}}d(T) \overset{(\ast)}{\leq} \beta M \sum_{j\geq l} 2^j\mu_j \overset{(\#)}{=} \sum_{i\in N(K)}\beta M 2^j = b(N(K))\]
+		Sei $K \subseteq L$ und $l := \min \left\{j \mid K\cap \Tc_j \neq \emptyset\right\}-1$, dann gilt:
+			\[b(K) = \sum_{T\in K} d(T) \leq \sum_{T \in \Tc_{j> l}}d(T) \overset{(\ast)}{\leq} \beta M \sum_{j\geq l} 2^j\mu_j \overset{(\#)}{=} \beta M \sum_{i\in N(K)} 2^{\lambda_i} = b(N(K))\]
 		Dabei ist $(\ast)$ gerade die zweite Bedingung für $(\alpha, \beta)$-Zuweisbarkeit und $(\#)$ folgt aus der Definition der Kantenmenge $F$ ($K$ enthält einen Baum mit Level $l+1$. Dieser ist bereits mit allen Fahrzeugen von Geschwindigkeit $2^l$ und mehr verbunden). 
 	\end{proof}
 	
