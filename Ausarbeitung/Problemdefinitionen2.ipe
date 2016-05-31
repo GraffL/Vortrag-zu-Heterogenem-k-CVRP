@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20160326182644" modified="D:20160522160612" title="Analysis I - Zusammenfassung"/>
+<info created="D:20160326182644" modified="D:20160531164811" title="Analysis I - Zusammenfassung"/>
 <preamble>\usepackage[utf8]{inputenc}
 
 \usepackage[ngerman]{babel}
@@ -376,7 +376,7 @@ h
 \item Startpunkt/Depot $s \in V$ 
 \item einheitliche Kapazität $Q$
 \item Bedarfe $(q_v)_{v\in V}, q_v \in \{0, ..., Q\}$
-\item $k$ Fahrzeuge mit Geschw. $(2^{\lambda_i})$
+\item $k$ Fahrzeuge mit Geschw. $(2^{\lambda_i})_{i=1}^k$
 \item \textbf{Lsgen:} Touren $(\sigma_i)$, die bei $s$ beginnen, gemeinsam alle Bedarfe erfüllen, wobei kein Fahrzeug jemals mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $\max \frac{d(\sigma_i)}{2^{\lambda_i}}$</text>
 <text matrix="1 0 0 1 50.887 -538.639" transformations="translations" pos="64 768" stroke="black" type="label" width="145.137" height="10.756" depth="3.59" halign="center" valign="top" size="Large">\textbf{(Metrisches) CVRP:}</text>
@@ -385,7 +385,7 @@ h
 \item Startpunkt/Depot $s \in V$ 
 \item Kapazität $Q$ (polynomiell in Eingabe)
 \item Bedarfe $(q_v)_{v\in V}, q_v \in \{0, ..., Q\}$
-\item \textbf{Lsgen:} Route $(\sigma)$, die bei $s$ beginn alle Bedarfe erfüllen nie mehr als $Q$ Elemente transportiert
+\item \textbf{Lsgen:} Route $(\sigma)$, die bei $s$ beginnend alle Bedarfe erfüllt und nie mehr als $Q$ Elemente transportiert
 \item \textbf{Ziel:} Minimiere $d(\sigma)$</text>
 <text layer="beta" matrix="8.61241 0 0 1.04575 -310.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.139" depth="8.17" valign="top" style="center">$\rho$-approximative Algorithmen
 
@@ -395,7 +395,7 @@ z.B. Christofides ($\rho = 1,5$)</text>
 48 480 m
 48 352 l
 </path>
-<text matrix="0 -1 1 0 -285.346 459.274" pos="64 480" stroke="black" type="minipage" width="112" height="13.139" depth="8.17" valign="top" style="center">Tour-Spliting-Heuristik
+<text matrix="0 -1 1 0 -285.346 459.274" pos="64 480" stroke="black" type="minipage" width="112" height="13.139" depth="8.17" valign="top" style="center">Tour-Splitting-Heuristik
 
 (Lemma 2 in [MH85])</text>
 <text matrix="8.61241 0 0 1.04575 -22.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-approximativer Algorithmus
@@ -430,7 +430,7 @@ $\Oc(1)$-approx.</text>
 464 304 m
 464 368 l
 </path>
-<text matrix="1 0 0 1 19.7505 -90.5444" pos="220.764 384.62" stroke="black" type="minipage" width="148.803" height="12.445" depth="7.48" valign="top" size="small" style="center">Lsg. $(\sigma_i)$ mit
+<text matrix="1 0 0 1 19.7505 -90.5444" pos="220.764 384.62" stroke="black" type="minipage" width="148.803" height="12.445" depth="7.48" valign="top" size="small">Lsg. $(\sigma_i)$ mit
 
 $\max \nicefrac{d(\sigma_i)}{2^{\lambda_i}} \in \Oc(1)\cdot \max \nicefrac{d(\tau_i)}{2^{\lambda_i}}$</text>
 <path matrix="1 0 0 1 -64 0" stroke="black" pen="ultrafat" join="1" arrow="normal/normal">
