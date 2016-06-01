@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20160326182644" modified="D:20160531164811" title="Analysis I - Zusammenfassung"/>
+<info created="D:20160326182644" modified="D:20160601075724" title="Analysis I - Zusammenfassung"/>
 <preamble>\usepackage[utf8]{inputenc}
 
 \usepackage[ngerman]{babel}
@@ -397,7 +397,7 @@ z.B. Christofides ($\rho = 1,5$)</text>
 </path>
 <text matrix="0 -1 1 0 -285.346 459.274" pos="64 480" stroke="black" type="minipage" width="112" height="13.139" depth="8.17" valign="top" style="center">Tour-Splitting-Heuristik
 
-(Lemma 2 in [MH85])</text>
+(Lemma 2 in [HK85])</text>
 <text matrix="8.61241 0 0 1.04575 -22.749 -95.628" transformations="translations" pos="39.3349 502.416" stroke="black" type="minipage" width="173.512" height="13.448" depth="8.47" valign="top" style="center">$\mathcal{O}(1)$-approximativer Algorithmus
 
 (Theorem 1.1 in [G\o+10])</text>
